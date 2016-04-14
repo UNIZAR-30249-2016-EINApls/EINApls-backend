@@ -13,7 +13,6 @@ import static org.junit.Assert.assertEquals;
 
 public class HelloTest {
 
-
     private WebTarget target;
 
     @Before
@@ -38,7 +37,7 @@ public class HelloTest {
         assertEquals("Hello world!", responseMsg);
     }
 
-    @Test
+    /*@Test
     public void testCafeteria() {
         String responseMsg = target.path("cafeteria").request().get(String.class);
         String responseSpected = "{\n" +
@@ -51,5 +50,5 @@ public class HelloTest {
                 "}\n";
 
         assertEquals(responseSpected, responseMsg);
-    }
+    }*/
 }

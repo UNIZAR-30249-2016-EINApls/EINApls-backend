@@ -19,7 +19,7 @@ public class CafeteriaEndpoint {
     static { LOGGER.setLevel(Level.FINER);}
 
     @GET
-    @Produces(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
     public String getCafeteria(){
         LOGGER.info("GET /cafeteria");
         String cafeteria_ada_byron = "{\n" +
