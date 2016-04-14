@@ -6,6 +6,7 @@ public class ApplicationConfig extends ResourceConfig {
 
     public ApplicationConfig() {
         register(HelloEndpoint.class);
+        register(CafeteriaEndpoint.class);
     }
 
 }

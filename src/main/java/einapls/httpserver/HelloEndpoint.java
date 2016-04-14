@@ -22,4 +22,6 @@ public class HelloEndpoint {
         LOGGER.info("GET /hello");
         return "Hello world!";
     }
+
+
 }
