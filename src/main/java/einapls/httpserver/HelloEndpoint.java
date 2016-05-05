@@ -9,6 +9,15 @@ import javax.ws.rs.core.MediaType;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+//adri pasará un enlace explicando esto
+//ejecutar con el terminar, con intelij pk se vuele muy loco
+//para compialr gralde build y ejecutar gradle run
+//wms es lo que tenemos que devolver par pitar las imagenes
+//en geoson las areas de la scafeterias lo que capturan los snesores
+//servico wms con las fotos d elos mpas de cada mpaa
+//modelo de negocio tmb pendiente
+//openstreetmap, adaptar las coordendas
+
 @Path("hello")
 public class HelloEndpoint {
 

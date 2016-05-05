@@ -11,4 +11,5 @@ public class ApplicationConfig extends ResourceConfig {
         register(SalaEstudioEndpint.class);
     }
 
+    //para cada de clase de java que teng aun end point hay que declararla en este constructor
 }

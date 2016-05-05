@@ -15,6 +15,9 @@ public class Server {
     private static final Logger LOGGER = Grizzly.logger(Server.class);
 
     private static HttpServer server;
+//devolveremos objetos geojson, que los tenemos que generar nosotros a manos, y hayuna ibreria para trabajr con json, ya esta importada en el gradle
+
+
 
     // Statically set logger level
     static { LOGGER.setLevel(Level.FINER); }
