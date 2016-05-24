@@ -1,4 +1,4 @@
-package einapls.httpserver;
+package einapls.infrastructure;
 
 import org.glassfish.grizzly.Grizzly;
 import org.glassfish.grizzly.http.server.HttpServer;

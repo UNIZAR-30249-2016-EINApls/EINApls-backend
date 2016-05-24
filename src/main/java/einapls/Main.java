@@ -1,6 +1,6 @@
 package einapls;
 
-import einapls.httpserver.Server;
+import einapls.infrastructure.Server;
 import org.glassfish.grizzly.Grizzly;
 
 import java.io.IOException;

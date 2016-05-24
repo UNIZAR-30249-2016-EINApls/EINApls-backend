@@ -1,4 +1,4 @@
-package einapls.httpserver;
+package einapls.infrastructure;
 
 import org.glassfish.grizzly.Grizzly;
 
@@ -13,16 +13,17 @@ import java.util.logging.Logger;
 /**
  * Created by Marcos on 14/04/2016.
  */
-@Path("salaestudio/{floor}")
-public class SalaEstudioEndpint {
+@Path("laboratorio/{id}")
+public class LaboratorioEndpoint {
+
     private static final Logger LOGGER = Grizzly.logger(Server.class);
 
     static { LOGGER.setLevel(Level.FINER);}
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    public String getSalaEstudio(@PathParam("floor") String floor) {
-        LOGGER.info("GET /salaestudio");
-        return "this should be a json of salaestudio in floor = " + floor;
+    public String getLaboratorio(@PathParam("id") String id) {
+        LOGGER.info("GET /laboratorio");
+        return "this should be a json of labotatory with id = " + id;
     }
 }
