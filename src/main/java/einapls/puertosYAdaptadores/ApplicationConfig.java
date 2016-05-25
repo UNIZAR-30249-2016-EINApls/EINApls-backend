@@ -1,4 +1,4 @@
-package einapls.infrastructure;
+package einapls.puertosYAdaptadores;
 
 import org.glassfish.jersey.server.ResourceConfig;
 

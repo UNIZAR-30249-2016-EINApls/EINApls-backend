@@ -1,6 +1,6 @@
 package einapls;
 
-import einapls.infrastructure.Server;
+import einapls.puertosYAdaptadores.Server;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

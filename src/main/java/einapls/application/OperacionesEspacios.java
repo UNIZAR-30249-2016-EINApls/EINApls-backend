@@ -1,6 +1,5 @@
 package einapls.application;
 
-import einapls.application.dto.EspacioDTO;
 import einapls.domain.enumerations.TipoEdificio;
 import einapls.domain.enumerations.TipoPiso;
 
@@ -9,7 +8,7 @@ import einapls.domain.enumerations.TipoPiso;
  */
 public class OperacionesEspacios {
 
-    public EspacioDTO getEspacios (TipoEdificio tipoEdificio, TipoPiso tipoPiso){
+    public String getEspacios (TipoEdificio tipoEdificio, TipoPiso tipoPiso){
         //TODO Hacerlo
         return null;
     }

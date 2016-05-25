@@ -1,6 +1,6 @@
 package einapls;
 
-import einapls.infrastructure.Server;
+import einapls.puertosYAdaptadores.Server;
 import org.glassfish.grizzly.Grizzly;
 
 import java.io.IOException;
