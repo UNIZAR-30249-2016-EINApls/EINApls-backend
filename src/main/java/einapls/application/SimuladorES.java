@@ -1,7 +1,7 @@
 package einapls.application;
 
 /**
- * Created by javmu on 24/05/2016.
+ * Simulador de Enrada salida de los distintos espacios
  */
 public class SimuladorES {
 }

@@ -5,10 +5,9 @@ import einapls.domain.enumerations.TipoEdificio;
 import einapls.domain.enumerations.TipoPiso;
 
 /**
- * Created by Jorge on 25/05/2016.
+ * Operaciones relacionadas con los Maquinas
  */
 public class OperacionesMaquima {
-
 
     public PlantaDTO getMaquinas(TipoEdificio tipoEdificio, TipoPiso tipoPiso){
         //TODO hacerlo

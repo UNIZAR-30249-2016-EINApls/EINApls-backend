@@ -9,7 +9,7 @@ public class EspacioDTO {
 
     private Espacio[] espacios;
 
-    EspacioDTO(Espacio[] espacios){
+    public EspacioDTO(Espacio[] espacios){
         this.espacios=espacios;
     }
 

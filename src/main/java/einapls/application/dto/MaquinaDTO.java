@@ -9,7 +9,7 @@ public class MaquinaDTO {
 
     private MaquinaExpendedora[] maquinas;
 
-    MaquinaDTO(MaquinaExpendedora[] maquinas){
+    public MaquinaDTO(MaquinaExpendedora[] maquinas){
         this.maquinas = maquinas;
     }
 

@@ -14,7 +14,7 @@ public class Espacio {
                                         //  BIBLIOTECA y CAFETERIA.
     private Localizacion localizacion;  //Localizacion asociada a este espacio
 
-    Espacio (int id, int capacidad, int ocupacion, TipoEspacio tipo, Localizacion localizacion){
+    public Espacio (int id, int capacidad, int ocupacion, TipoEspacio tipo, Localizacion localizacion){
         this.id = id;
         this.capacidad = capacidad;
         this.ocupacion = ocupacion;

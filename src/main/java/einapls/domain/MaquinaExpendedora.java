@@ -11,7 +11,7 @@ public class MaquinaExpendedora {
     private HashMap<String, Integer> stock; //HashMap que almacena toda la informacion del stock de una maquina
     private  Localizacion localizacion;
 
-    MaquinaExpendedora(int id, HashMap<String, Integer> stock, Localizacion localizacion) {
+    public MaquinaExpendedora(int id, HashMap<String, Integer> stock, Localizacion localizacion) {
         this.id = id;
         this.stock = stock;
         this.localizacion = localizacion;

@@ -15,7 +15,7 @@ public class Incidencia {
     private String descripcion;                 //Descripcion asignada por el usuario a la incidencia
     private Localizacion localizacion;
 
-    Incidencia (int id, String titulo, String foto, String descripcion, Localizacion localizacion) {
+    public Incidencia (int id, String titulo, String foto, String descripcion, Localizacion localizacion) {
         this.id = id;
         this.titulo = titulo;
         //Todas las incidencias inicialmente quedaran marcadas como abiertas, a la espera de que un administrador cambie

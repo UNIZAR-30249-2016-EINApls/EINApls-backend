@@ -11,7 +11,7 @@ public class IncidenciaDTO {
 
     private Incidencia[] incidencias;
 
-    IncidenciaDTO(Incidencia[] incidencias){ this.incidencias = incidencias; }
+    public IncidenciaDTO(Incidencia[] incidencias){ this.incidencias = incidencias; }
 
     public String serializeToGeoJson(){
         //Formateamos un nuevo GeoJson con los datos obtenidos siguiendo el siguiente formato

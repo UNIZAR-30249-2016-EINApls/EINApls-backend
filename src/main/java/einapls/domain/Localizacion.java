@@ -15,7 +15,7 @@ public class Localizacion {
     private TipoEdificio TIPOEDIFICIO;  //Tipo de edificio de la localizacion, pudiendo ser ADA_BYRON, TORRES_QUEVEDO
                                         //  y BETANCOURT
 
-    Localizacion (float coordX, float coordY, TipoPiso tipoPiso, TipoEdificio tipoEdificio) {
+    public Localizacion (float coordX, float coordY, TipoPiso tipoPiso, TipoEdificio tipoEdificio) {
         this.coordX = coordX;
         this.coordY = coordY;
         this.TIPOPISO = tipoPiso;

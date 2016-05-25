@@ -13,7 +13,7 @@ public class PlantaDTO {
     private MaquinaExpendedora[] maquinas;
     private Incidencia[] incidencias;
 
-    PlantaDTO(Espacio[] espacios, MaquinaExpendedora[] maquinas, Incidencia[] incidencias){
+    public PlantaDTO(Espacio[] espacios, MaquinaExpendedora[] maquinas, Incidencia[] incidencias){
         this.espacios=espacios;
         this.maquinas = maquinas;
         this.incidencias = incidencias;
