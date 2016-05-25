@@ -1,5 +1,6 @@
 package einapls.application;
 
+import einapls.application.dto.PlantaDTO;
 import einapls.domain.enumerations.TipoEdificio;
 import einapls.domain.enumerations.TipoPiso;
 

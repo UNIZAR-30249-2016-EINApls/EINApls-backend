@@ -7,17 +7,19 @@ import einapls.domain.enumerations.TipoEspacio;
  */
 public class Espacio {
 
-    private int id;                 //Id único
-    private final int capacidad;    //Capacidad total del espacio
-    private int ocupacion;          //Ocupacion actual del espacio, se actualizara cuando asi lo indique un sensor
-    private TipoEspacio TIPO;       //Tipo de espacio, a diferenciar entre AULA, LABORATORIO, SALA_DE_ESTUDIO, BIBLIOTECA
-                                    // y CAFETERIA.
+    private int id;                     //Id único
+    private final int capacidad;        //Capacidad total del espacio
+    private int ocupacion;              //Ocupacion actual del espacio, se actualizara cuando asi lo indique un sensor
+    private TipoEspacio TIPO;           //Tipo de espacio, a diferenciar entre AULA, LABORATORIO, SALA_DE_ESTUDIO,
+                                        //  BIBLIOTECA y CAFETERIA.
+    private Localizacion localizacion;  //Localizacion asociada a este espacio
 
-    Espacio (int id, int capacidad, int ocupacion, TipoEspacio tipo){
+    Espacio (int id, int capacidad, int ocupacion, TipoEspacio tipo, Localizacion localizacion){
         this.id = id;
         this.capacidad = capacidad;
         this.ocupacion = ocupacion;
         this.TIPO = tipo;
+        this.localizacion = localizacion;
     }
 
    //GETTERs
@@ -31,6 +33,8 @@ public class Espacio {
     public TipoEspacio getTipo() {
         return TIPO;
     }
+
+    public Localizacion getLocalizacion() { return localizacion; }
 
     //SETTERs
     public void incrementarOcupacion() {

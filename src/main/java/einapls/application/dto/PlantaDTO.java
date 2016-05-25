@@ -1,11 +1,11 @@
-package einapls.application;
+package einapls.application.dto;
 
 import einapls.domain.Espacio;
 import einapls.domain.Incidencia;
 import einapls.domain.MaquinaExpendedora;
 
 /**
- * Created by Jorge on 25/05/2016.
+ * Data Transfer object de Plantas
  */
 public class PlantaDTO {
 

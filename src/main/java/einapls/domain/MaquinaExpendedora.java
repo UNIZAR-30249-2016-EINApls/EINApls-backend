@@ -9,10 +9,12 @@ public class MaquinaExpendedora {
 
     private int id;                         //id unico
     private HashMap<String, Integer> stock; //HashMap que almacena toda la informacion del stock de una maquina
+    private  Localizacion localizacion;
 
-    MaquinaExpendedora(int id, HashMap<String, Integer> stock) {
+    MaquinaExpendedora(int id, HashMap<String, Integer> stock, Localizacion localizacion) {
         this.id = id;
         this.stock = stock;
+        this.localizacion = localizacion;
     }
 
     //GETTERs
@@ -21,6 +23,8 @@ public class MaquinaExpendedora {
     public HashMap<String, Integer> getAllStock() {
         return stock;
     }
+
+    public Localizacion getLocalizacion() { return localizacion; }
 
     //SETTERs
     public void incrementarStock(String producto) {

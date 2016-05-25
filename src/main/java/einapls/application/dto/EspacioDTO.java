@@ -1,9 +1,9 @@
-package einapls.application;
+package einapls.application.dto;
 
 import einapls.domain.Espacio;
 
 /**
- * Created by Jorge on 25/05/2016.
+ * Data Transfer object de Espacios
  */
 public class EspacioDTO {
 

@@ -1,16 +1,17 @@
 package einapls.application;
 
-import einapls.application.dto.EspacioDTO;
+import einapls.application.dto.PlantaDTO;
 import einapls.domain.enumerations.TipoEdificio;
 import einapls.domain.enumerations.TipoPiso;
 
 /**
  * Created by Jorge on 25/05/2016.
  */
-public class OperacionesEspacios {
+public class OperacionesMaquima {
 
-    public EspacioDTO getEspacios (TipoEdificio tipoEdificio, TipoPiso tipoPiso){
-        //TODO Hacerlo
+
+    public PlantaDTO getMaquinas(TipoEdificio tipoEdificio, TipoPiso tipoPiso){
+        //TODO hacerlo
         return null;
     }
 }
