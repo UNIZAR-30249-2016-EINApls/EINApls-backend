@@ -9,7 +9,7 @@ import einapls.domain.enumerations.TipoPiso;
 public class OperacionesEspacios {
 
     public String getEspacios (TipoEdificio tipoEdificio, TipoPiso tipoPiso){
-        //TODO Hacerlo
+
         return null;
     }
 }

@@ -5,7 +5,7 @@ import einapls.domain.Localizacion;
 import einapls.domain.enumerations.TipoEspacio;
 
 /**
- * Created by Jorge on 25/05/2016.
+ * Serializador de un Espacio, dado un Array de Espacios devolverá un GeoJson con la información de todos ellos
  */
 public class EspacioSerializer {
 
@@ -14,6 +14,7 @@ public class EspacioSerializer {
 
     public EspacioSerializer(Espacio[] espacios){ this.espacios=espacios; }
 
+    /*
     public String serializeToGeoJson(){
 
         /*Formateamos un nuevo GeoJson con los datos obtenidos siguiendo el siguiente formato:
@@ -21,7 +22,7 @@ public class EspacioSerializer {
                 "type": "FeatureCollection",
                 "features": ['bodyGeoJson']
             }
-         */
+         *//*
         String inicioGeoJson = "{" +
                 "\"type\" : \"FeatureCollection\"," +
                 "\"features\": [";
@@ -38,9 +39,9 @@ public class EspacioSerializer {
             }
         }
         return inicioGeoJson+bodyGeoJson+finGeoJson;
-    }
+    }*/
 
-    public String serializeFeatureEspacio(Espacio espacio, boolean esUltimo){
+    public static String serializeFeatureEspacio(Espacio espacio, boolean esUltimo){
         //Cargamos los datos del espacio
         int id = espacio.getId();
         int ocupacion = espacio.getOcupacion();
@@ -64,10 +65,9 @@ public class EspacioSerializer {
         String feaureEspacio = "{ \"type\": \"Feature\", " +
                     "\"geometry\": { \"type\": \"Point\", \"coordinates\": [" + coordX + ", " + coordY + "]}, " +
                     "\"properties\": {" +
-                        "\"id\": \"" + titulo + "\"," +
-                        "\"ocupacion\": \"" + estadoIncidencia.toString() + "\"," +
-                        "\"foto\": \"" + foto + "\"," +
-                        "\"descripcion\": \"" + descripcion +"\"" +
+                        "\"id\": \"" + id + "\"," +
+                        "\"ocupacion\": \"" + ocupacion + "\"," +
+                        "\"tipoEspacio\": \"" + tipoEspacio.toString() + "\"" +
                     "}" +
                 "},";
         //Eliminamos la ',' sobrante al final de bodyGeoJson
