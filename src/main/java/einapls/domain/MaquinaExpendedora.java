@@ -24,11 +24,17 @@ public class MaquinaExpendedora {
 
     //SETTERs
     public void incrementarStock(String producto) {
-//// TODO: 25/05/2016 programar el metodo para incrementar el stock de un producto de una maquina expendedora
+//// TODO: 25/05/2016 Comprobar que funciona
+        int stockProducto = stock.get(producto);
+        stockProducto++;
+        stock.put(producto,stockProducto);
     }
 
     public void decrementarStock(String producto) {
-//// TODO: 25/05/2016 programar el metodo para dencrementar el stock de un producto de una maquina expendedora
+//// TODO: 25/05/2016 Comprobar que funciona
+        int stockProducto = stock.get(producto);
+        stockProducto--;
+        stock.put(producto,stockProducto);
     }
 
 }
