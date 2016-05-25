@@ -22,19 +22,21 @@ public class RepositorioEspacios {
             query.setInt(1, id);
 
             ResultSet rs = query.executeQuery();
-            String edificio = "";
-            String piso = "";
+
             float latitud = -1;
             float longitud = -1;
             int capacidad = -1;
             String tipoEspacio = "";
+            String tipoPiso = "";
+            String tipoEdificio = "";
             if (rs.next()) {
-                edificio = rs.getString("edificio");
-                piso = rs.getString("piso");
                 latitud = rs.getFloat("lat");
                 longitud = rs.getFloat("lon");
                 capacidad = rs.getInt("capacidad");
-                tipoEspacio = rs.getString("tipo");
+                tipoEspacio = rs.getString("tipoespacio");
+                tipoPiso = rs.getString("tipoPiso");
+                tipoEdificio = rs.getString("tipoedificio");
+
             }
             //CONVERSIÓN TIPO DE ESPACIO
             TipoEspacio miEspacio = TipoEspacio.AULA;
@@ -53,43 +55,38 @@ public class RepositorioEspacios {
 
             //CONVERSIÓN TIPO DE EDIFICIO
             TipoEdificio miEdificio =  TipoEdificio.ADA_BYRON;
-            if (edificio.equals("TORRES_QUEVEDO")) {
+            if (tipoEdificio.equals("TORRES_QUEVEDO")) {
                 miEdificio = TipoEdificio.TORRES_QUEVEDO;
             }
-            else if (edificio.equals("BETANCOURT")) {
+            else if (tipoEdificio.equals("BETANCOURT")) {
                 miEdificio = TipoEdificio.BETANCOURT;
             }
 
             //CONVERSIÓN TIPO DE PISO
             TipoPiso miPiso =  TipoPiso.SOTANO;
-            if (piso.equals("PISO_0")) {
+            if (tipoPiso.equals("PISO_0")) {
                 miPiso = TipoPiso.PISO_0;
             }
-            else if (piso.equals("PISO_1")) {
+            else if (tipoPiso.equals("PISO_1")) {
                 miPiso = TipoPiso.PISO_1;
             }
-            else if (piso.equals("PISO_2")) {
+            else if (tipoPiso.equals("PISO_2")) {
                 miPiso = TipoPiso.PISO_2;
             }
-            else if (piso.equals("PISO_3")) {
+            else if (tipoPiso.equals("PISO_3")) {
                 miPiso = TipoPiso.PISO_3;
             }
-            else if (piso.equals("PISO_4")) {
+            else if (tipoPiso.equals("PISO_4")) {
                 miPiso = TipoPiso.PISO_4;
             }
-            Espacio miEspacio2 = new Espacio(id, capacidad, 0,  miEspacio, new Localizacion(latitud, longitud, miPiso, miEdificio));
-
-            System.out.println("EL TIPOOO: " + miEspacio2.getTipo());
-
-            return new Espacio(id, capacidad, 0,  miEspacio, new Localizacion(latitud, longitud, miPiso, miEdificio));
+            System.out.println("TIPO_PISO: " + miPiso + " | TIPO_EDIFICIO: " + miEdificio + " | TIPO_ESPACIO: "  + miEspacio);
+           return new Espacio(id, capacidad, 0,  miEspacio, new Localizacion(latitud, longitud, miPiso, miEdificio));
             //TODO: La ocupación la ofrece el servicio Disponibilidad
-
 
         } catch (SQLException e) {
             e.printStackTrace();
+            return null;
         }
-    return null;
-
     }
 
     public static Espacio[] findEspacios (TipoEdificio tipoEdificio, int id) {

@@ -8,6 +8,6 @@ import einapls.domain.RepositorioEspacios;
 public class TestRepositorio {
 
     public static void main (String[] args) {
-        System.out.println(RepositorioEspacios.findEspacio(1));
+        System.out.println(RepositorioEspacios.findEspacio(5));
     }
 }
