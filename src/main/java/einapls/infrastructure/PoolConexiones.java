@@ -11,7 +11,7 @@ public class PoolConexiones {
     /*
     Esto se conecta a la bd de postgresql
      */
-    public static void main(){
+    public static void main(String[] args){
         System.out.println("Trying");
         try {
 
@@ -33,8 +33,8 @@ public class PoolConexiones {
         try {
 
             connection = DriverManager.getConnection(
-                    "jdbc:postgresql://127.0.0.1:5432/testdb", "mkyong",
-                    "123456");
+                    "jdbc:postgresql://85.251.93.32:5432/proyectodb", "proyecto",
+                    "proyectovm");
 
         } catch (SQLException e) {
 
