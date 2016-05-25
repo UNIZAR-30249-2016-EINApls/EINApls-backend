@@ -33,8 +33,8 @@ public class PoolConexiones {
         try {
 
             connection = DriverManager.getConnection(
-                    "jdbc:postgresql://85.251.93.32:5432/proyectodb", "proyecto",
-                    "proyectovm");
+                    "jdbc:postgresql://85.251.93.32:5432/einapls_db", "einapls",
+                    "einaplsvm");
 
         } catch (SQLException e) {
 
