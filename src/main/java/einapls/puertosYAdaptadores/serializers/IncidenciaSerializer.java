@@ -9,7 +9,7 @@ public class IncidenciaSerializer {
     private Incidencia[] incidencias;
 
     public IncidenciaSerializer(Incidencia[] incidencias){ this.incidencias = incidencias; }
-
+    /*
     public String serializeToGeoJson(){
 
         /*Formateamos un nuevo GeoJson con los datos obtenidos siguiendo el siguiente formato:
@@ -17,7 +17,7 @@ public class IncidenciaSerializer {
                 "type": "FeatureCollection",
                 "features": ['bodyGeoJson']
             }
-         */
+         *//*
         String inicioGeoJson = "{" +
                 "\"type\" : \"FeatureCollection\"," +
                 "\"features\": [";
@@ -34,9 +34,9 @@ public class IncidenciaSerializer {
             }
         }
         return inicioGeoJson+bodyGeoJson+finGeoJson;
-    }
+    }*/
 
-    public String serializeFeatureIncidencia(Incidencia incidencia, boolean esUltimo){
+    public static String serializeFeatureIncidencia(Incidencia incidencia, boolean esUltimo){
         //Cargamos los datos de la incidencia
         String titulo = incidencia.getTitulo();
         EstadoIncidencia estadoIncidencia = incidencia.getEstadoIncidencia();

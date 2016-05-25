@@ -6,7 +6,8 @@ import einapls.domain.MaquinaExpendedora;
 import java.util.HashMap;
 
 /**
- * Created by Jorge on 25/05/2016.
+ * Serializador de una Maquina Expendedora, dado un Array de Maquina Expendedora devolverá un GeoJson con la información
+ * de todos ellas
  */
 public class MaquinaSerializer {
 
@@ -16,15 +17,36 @@ public class MaquinaSerializer {
     public MaquinaSerializer(MaquinaExpendedora[] maquinas){
         this.maquinas = maquinas;
     }
-
+/*
     public String serializeToGeoJson(){
-        //TODO Programar el get GEOJson de maquinas dto
-        return null;
+
+        /*Formateamos un nuevo GeoJson con los datos obtenidos siguiendo el siguiente formato:
+            {
+                "type": "FeatureCollection",
+                "features": ['bodyGeoJson']
+            }
+         *//*
+        String inicioGeoJson = "{" +
+                "\"type\" : \"FeatureCollection\"," +
+                "\"features\": [";
+        String finGeoJson = "]}";
+        String bodyGeoJson="";
+        if(maquinas.length>0){
+            boolean esUltimo = false;
+            //Recorremos el array de espacios
+            for(int i=0;i<maquinas.length;i++){
+                if(i==(maquinas.length-1)){
+                    esUltimo=true;
+                }
+                bodyGeoJson = bodyGeoJson + serializeFeatureMaquinaExpendedora(maquinas[i],esUltimo);
+            }
+        }
+        return inicioGeoJson+bodyGeoJson+finGeoJson;
     }
+*/
 
 
-
-    public String serializeFeatureMaquinaExpendedora(MaquinaExpendedora maquina, boolean esUltimo){
+    public static String serializeFeatureMaquinaExpendedora(MaquinaExpendedora maquina, boolean esUltimo){
         //Cargamos los datos de la Maquina Expendedora
         HashMap<String, Integer> stock = maquina.getAllStock();
 
@@ -47,7 +69,7 @@ public class MaquinaSerializer {
              },
              */
 
-
+        //todo HACER ESTO
 
 
         String feaureIncidencia = "{ \"type\": \"Feature\", " +
