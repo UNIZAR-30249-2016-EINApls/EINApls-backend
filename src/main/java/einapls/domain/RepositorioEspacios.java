@@ -16,19 +16,26 @@ public class RepositorioEspacios {
         Connection con = PoolConexiones.getConex();
         try {
             stmt = con.createStatement();
-            PreparedStatement query = con.prepareStatement("SELECT * FROM adabyron_0 WHERE id = ?");
-            query.setString(1, id+"");
+            PreparedStatement query = con.prepareStatement("SELECT * FROM adabyron_0");
 
             ResultSet rs = query.executeQuery();
-            int idd = rs.getInt("id");
-            String geom = rs.getString("geom");
-            String layer = rs.getString("layer");
-            String id_utc = rs.getString("id_utc");
-            String id_centro = rs.getString("id_centro");
-            String tipo_de_uso = rs.getString("tipo_de_us");
-            String area_gem = rs.getString("area_gem");
+            String id_centro = "";
+            while(rs.next()) {
+                long idd = rs.getLong("id");
+                String geom = rs.getString("geom");
+                String layer = rs.getString("layer");
+                String id_utc = rs.getString("id_utc");
+                id_centro = rs.getString("id_centro");
+                String tipo_de_uso = rs.getString("tipo_de_us");
+                String area_gem = rs.getString("area_geom");
+                System.out.println("IDD: " + idd);
 
-            System.out.println("ID_CENTRO: " + id_centro);
+                if (id_centro.startsWith("AULA") || id_centro.startsWith("LABORATORIO")) {
+
+                    // INSERTAR EN TABLA ESPACIO CON NUEVOS CAMPOS (OCUPACION, ETC).
+                }
+
+            }
 
 
         } catch (SQLException e) {
