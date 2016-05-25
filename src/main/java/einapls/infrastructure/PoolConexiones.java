@@ -1,8 +1,6 @@
 package einapls.infrastructure;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 /**
  * Created by Marcos on 25/05/2016.
@@ -49,5 +47,26 @@ public class PoolConexiones {
         } else {
             System.out.println("Failed to make connection!");
         }
+    }
+
+    public static void select(Connection c) throws SQLException {
+        Statement stmt = null;
+        stmt = c.createStatement();
+
+        ResultSet rs = stmt.executeQuery( "SELECT * FROM einapls.espacio;" );
+        while ( rs.next() ) {
+            int id = rs.getInt(1);
+            Array  ed = rs.getArray(2);
+            String piso  = rs.getString(3);
+            String  lat = rs.getString("lat");
+            String lon = rs.getString("lon");
+            System.out.println(id);
+            System.out.println(ed);
+            System.out.println(piso);
+            System.out.println(lat);
+        }
+        rs.close();
+        stmt.close();
+        c.close();
     }
 }
