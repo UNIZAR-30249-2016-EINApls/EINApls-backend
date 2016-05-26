@@ -26,7 +26,7 @@ public class Main {
         try (Scanner scan = new Scanner(System.in)){
             Server.startServer();
             //Start Espacios
-            Espacio[] esps1 = RepositorioEspacios.findEspacios(TipoPiso.PISO_0, TipoEdificio.ADA_BYRON);
+            /*Espacio[] esps1 = RepositorioEspacios.findEspacios(TipoPiso.PISO_0, TipoEdificio.ADA_BYRON);
             for(int i=0; i<esps1.length; i++){
                 (new Thread(new SimuladorES(esps1[i]))).start();
             }
@@ -48,7 +48,7 @@ public class Main {
             for(int i=0; i<mes.length; i++){
                 mes[i].setStock(hm);
                 (new Thread(new SimuladorStock(mes[i]))).start();
-            }
+            }*/
 
             LOGGER.info("Press 's'+'enter' to shutdown now the server...");
             while(!scan.nextLine().equals("s"));
