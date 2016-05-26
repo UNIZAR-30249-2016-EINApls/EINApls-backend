@@ -55,7 +55,7 @@ public class EspacioSerializer {
         float lon = localizacion.getLon();
         TipoPiso tipoPiso = localizacion.getPiso();
         TipoEdificio tipoEdificio = localizacion.getEdificio();
-  
+
         /*Formateamos un nuevo punto con los datos obtenidos siguiendo el siguiente formato
             { "type": "Feature",
                 "geometry": {"type": "Point", "coordinates": ['lat', 'lon']},
@@ -63,8 +63,8 @@ public class EspacioSerializer {
                     "id": 'id',
                     "ocupacion": 'ocupacion',
                     ""tipoEspacio: "'tipoEspacio'",
-                    ""tipoPiso: "'tipoEspacio'",
-                    ""tipoEdificio: "'tipoEspacio'",
+                    "tipoPiso": "'tipoEspacio'",
+                    "tipoEdificio": "'tipoEspacio'"
                 }
              },
          */

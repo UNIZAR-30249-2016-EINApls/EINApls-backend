@@ -3,6 +3,8 @@ package einapls.puertosYAdaptadores.serializers;
 import einapls.domain.Incidencia;
 import einapls.domain.Localizacion;
 import einapls.domain.enumerations.EstadoIncidencia;
+import einapls.domain.enumerations.TipoEdificio;
+import einapls.domain.enumerations.TipoPiso;
 
 public class IncidenciaSerializer {
 
@@ -45,28 +47,34 @@ public class IncidenciaSerializer {
 
         //Cargamos la localizacion de la incidencia
         Localizacion localizacion = incidencia.getLocalizacion();
-        float coordX = localizacion.getLat();
-        float coordY = localizacion.getLon();
+        float lat = localizacion.getLat();
+        float lon = localizacion.getLon();
+        TipoPiso tipoPiso = localizacion.getPiso();
+        TipoEdificio tipoEdificio = localizacion.getEdificio();
 
         /*Formateamos un nuevo punto con los datos obtenidos siguiendo el siguiente formato
             { "type": "Feature",
-                "geometry": {"type": "Point", "coordinates": ['coordX', 'coordY']},
+                "geometry": {"type": "Point", "coordinates": ['lat', 'lon']},
                 "properties": {
                     "titulo": "'titulo'",
                     "estadoIncidencia": "'estadoIncidencia.toString()'",
                     "foto": "'foto'",
-                    "descripcion": "'descripcion'"
+                    "descripcion": "'descripcion'",
+                    "tipoPiso": "'tipoEspacio'",
+                    "tipoEdificio": "'tipoEspacio'"
                 }
              },
          */
         String feaureIncidencia = "{ \"type\": \"Feature\", " +
-                "\"geometry\": { \"type\": \"Point\", \"coordinates\": [" + coordX + ", " + coordY + "]}, " +
-                "\"properties\": {" +
-                "\"titulo\": \"" + titulo + "\"," +
-                "\"estadoIncidencia\": \"" + estadoIncidencia.toString() + "\"," +
-                "\"foto\": \"" + foto + "\"," +
-                "\"descripcion\": \"" + descripcion +"\"" +
-                "}" +
+                    "\"geometry\": { \"type\": \"Point\", \"coordinates\": [" + lat + ", " + lon + "]}, " +
+                    "\"properties\": {" +
+                        "\"titulo\": \"" + titulo + "\"," +
+                        "\"estadoIncidencia\": \"" + estadoIncidencia.toString() + "\"," +
+                        "\"foto\": \"" + foto + "\"," +
+                        "\"descripcion\": \"" + descripcion +"\"," +
+                        "\"tipoPiso\": \"" + tipoPiso +"\"," +
+                        "\"tipoEdificio\": \"" + tipoEdificio +"\"" +
+                    "}" +
                 "},";
         //Eliminamos la ',' sobrante al final de bodyGeoJson
         if(esUltimo){
