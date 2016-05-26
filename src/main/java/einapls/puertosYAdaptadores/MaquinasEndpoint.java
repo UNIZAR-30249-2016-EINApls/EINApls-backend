@@ -18,7 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-@Path("maquinas/{tipoPiso}+{tipoEdificio}")
+@Path("maquinas/{tipoPiso}/{tipoEdificio}")
 public class MaquinasEndpoint {
 
     private static final Logger LOGGER = Grizzly.logger(Server.class);

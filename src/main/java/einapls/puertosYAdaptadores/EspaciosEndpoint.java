@@ -2,6 +2,7 @@ package einapls.puertosYAdaptadores;
 
 import einapls.application.OperacionesEspacios;
 import einapls.domain.Espacio;
+import einapls.domain.enumerations.ConversorEnum;
 import einapls.domain.enumerations.TipoEdificio;
 import einapls.domain.enumerations.TipoPiso;
 import einapls.puertosYAdaptadores.serializers.SerializerToGeoJson;
@@ -15,8 +16,7 @@ import javax.ws.rs.core.MediaType;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
-@Path("espacios/{tipoPiso}+{tipoEdificio}")
+@Path("espacios/{tipoPiso}/{tipoEdificio}")
 public class EspaciosEndpoint {
 
     private static final Logger LOGGER = Grizzly.logger(Server.class);
@@ -25,11 +25,13 @@ public class EspaciosEndpoint {
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    public String getEspacios(@PathParam("tipoPiso") TipoPiso tipoPiso,
-                              @PathParam("tipoEdificio") TipoEdificio tipoEdificio) {
+    public String getEspacios(@PathParam("tipoPiso") String tipoPiso,
+                              @PathParam("tipoEdificio") String tipoEdificio) {
         LOGGER.info("GET /espacios");
+        TipoPiso tipoPis = ConversorEnum.getTipoPiso(tipoPiso);
+        TipoEdificio tipoEdif = ConversorEnum.getTipoEdificio(tipoEdificio);
 
-        Espacio[] espacios = OperacionesEspacios.getEspacios(tipoPiso, tipoEdificio);
+        Espacio[] espacios = OperacionesEspacios.getEspacios(tipoPis, tipoEdif);
         //Le pasamos el array de Espacios al serializar para obtener un GeoJSon
         SerializerToGeoJson serializer = new SerializerToGeoJson(espacios);
         String geoJsonEspacios = serializer.serializeToGeoJson();
