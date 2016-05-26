@@ -2,7 +2,9 @@ package einapls.puertosYAdaptadores.serializers;
 
 import einapls.domain.Espacio;
 import einapls.domain.Localizacion;
+import einapls.domain.enumerations.TipoEdificio;
 import einapls.domain.enumerations.TipoEspacio;
+import einapls.domain.enumerations.TipoPiso;
 
 /**
  * Serializador de un Espacio, dado un Array de Espacios devolverá un GeoJson con la información de todos ellos
@@ -49,25 +51,31 @@ public class EspacioSerializer {
 
         //Cargamos la localizacion del espacio
         Localizacion localizacion = espacio.getLocalizacion();
-        float coordX = localizacion.getLat();
-        float coordY = localizacion.getLon();
-
+        float lat = localizacion.getLat();
+        float lon = localizacion.getLon();
+        TipoPiso tipoPiso = localizacion.getPiso();
+        TipoEdificio tipoEdificio = localizacion.getEdificio();
+  
         /*Formateamos un nuevo punto con los datos obtenidos siguiendo el siguiente formato
             { "type": "Feature",
-                "geometry": {"type": "Point", "coordinates": ['coordX', 'coordY']},
+                "geometry": {"type": "Point", "coordinates": ['lat', 'lon']},
                 "properties": {
-                    "id": "'id'",
-                    "ocupacion":"'ocupacion'",
-                    ""tipoEspacio:"'tipoEspacio'"
+                    "id": 'id',
+                    "ocupacion": 'ocupacion',
+                    ""tipoEspacio: "'tipoEspacio'",
+                    ""tipoPiso: "'tipoEspacio'",
+                    ""tipoEdificio: "'tipoEspacio'",
                 }
              },
          */
         String feaureEspacio = "{ \"type\": \"Feature\", " +
-                    "\"geometry\": { \"type\": \"Point\", \"coordinates\": [" + coordX + ", " + coordY + "]}, " +
+                    "\"geometry\": { \"type\": \"Point\", \"coordinates\": [" + lat + ", " + lon + "]}, " +
                     "\"properties\": {" +
-                        "\"id\": \"" + id + "\"," +
-                        "\"ocupacion\": \"" + ocupacion + "\"," +
-                        "\"tipoEspacio\": \"" + tipoEspacio.toString() + "\"" +
+                        "\"id\": " + id + "," +
+                        "\"ocupacion\": " + ocupacion + "," +
+                        "\"tipoEspacio\": \"" + tipoEspacio.toString() + "\", " +
+                        "\"tipoPiso\": \"" + tipoPiso.toString() + "\", " +
+                        "\"tipoEdificio\": \"" + tipoEdificio.toString() + "\" " +
                     "}" +
                 "},";
         //Eliminamos la ',' sobrante al final de bodyGeoJson
@@ -77,7 +85,16 @@ public class EspacioSerializer {
         return  feaureEspacio;
     }
 
-
+/*
+*   String feaureEspacio = "{ \"type\": \"Feature\", " +
+                    "\"geometry\": { \"type\": \"Point\", \"coordinates\": [" + coordX + ", " + coordY + "]}, " +
+                    "\"properties\": {" +
+                        "\"id\": \"" + id + "\"," +
+                        "\"ocupacion\": \"" + ocupacion + "\"," +
+                        "\"tipoEspacio\": \"" + tipoEspacio.toString() + "\"" +
+                    "}" +
+                "},";
+ */
 
 
 
