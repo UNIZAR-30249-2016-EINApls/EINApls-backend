@@ -2,6 +2,7 @@ package einapls.domain;
 
 import einapls.domain.enumerations.ConversorEnum;
 import einapls.domain.enumerations.TipoEdificio;
+import einapls.domain.enumerations.TipoEspacio;
 import einapls.domain.enumerations.TipoPiso;
 import einapls.infrastructure.PoolConexiones;
 
@@ -14,76 +15,77 @@ import java.util.HashMap;
  */
 public class RepositorioMaquinas {
 
-    public MaquinaExpendedora findMaquina(int id) {
-        Statement stmt = null;
+    public static MaquinaExpendedora findMaquina(int id) {
         Connection con = PoolConexiones.getConex();
         try {
-            stmt = con.createStatement();
-            //TODO tiene que haber una tabla maquinas
-            PreparedStatement query = con.prepareStatement("SELECT * FROM maquinas WHERE id = ?");
+            PreparedStatement query = con.prepareStatement("SELECT * FROM maq_exp WHERE id = ?");
             query.setInt(1, id);
 
             ResultSet rs = query.executeQuery();
 
-            //Atributos Maquina Expendedora
-            HashMap<String, Integer> stock =  null;
-            //Localizacion
-            float lat = -1;
-            float lon = -1;
-            String tipoPisoString = "";
-            String tipoEdificioString = "";
-
+            float latitud = -1;
+            float longitud = -1;
+            int capacidad = -1;
+            String tipoPiso = "";
+            String tipoEdificio = "";
             if (rs.next()) {
-                //stock =
-                lat = rs.getFloat("lat");
-                lon = rs.getFloat("lon");
-                tipoPisoString = rs.getString("tipoPiso");
-                tipoEdificioString = rs.getString("tipoedificio");
-            }
+                latitud = rs.getFloat("lat");
+                longitud = rs.getFloat("lon");
+                tipoPiso = rs.getString("tipopiso");
+                tipoEdificio = rs.getString("tipoedificio");
 
-            TipoPiso tipoPiso = ConversorEnum.getTipoPiso(tipoPisoString);
-            TipoEdificio tipoEdificio = ConversorEnum.getTipoEdificio(tipoEdificioString);
-            Localizacion localizacion = new Localizacion(lat, lon, tipoPiso, tipoEdificio);
-            //TODO SOLUCIONAR EL TEMA DEL STOCK EN LA BD
-            return new MaquinaExpendedora(id, null, localizacion );
+                System.out.println("TIPO_PISOOOOOO " + tipoPiso );
+                TipoPiso tipoPisoEnum = ConversorEnum.getTipoPiso(tipoPiso);
+                TipoEdificio tipoEdificioEnum = ConversorEnum.getTipoEdificio(tipoEdificio);
+                Localizacion localizacion = new Localizacion(latitud, longitud, tipoPisoEnum, tipoEdificioEnum);
+
+                System.out.println("TIPO_PISO: " + tipoPisoEnum.toString() + " | TIPO_EDIFICIO: "
+                        + tipoEdificioEnum.toString() + " | COORDX: " + latitud);
+
+                return new MaquinaExpendedora(id, new HashMap<String, Integer>(), localizacion);
+            }
+            else return null;
+
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
         }
     }
 
-    public MaquinaExpendedora[] findMaquinas(TipoEdificio tipoEdificio, TipoPiso tipoPiso) {
-        Statement stmt = null;
+    public static MaquinaExpendedora[] findMaquinas(TipoPiso tipoPis, TipoEdificio tipoEdif) {
+        ArrayList<MaquinaExpendedora> listMaquinas = new ArrayList<>();
         Connection con = PoolConexiones.getConex();
-        ArrayList<MaquinaExpendedora> maquinaExpendedoras;
-
         try {
-            stmt = con.createStatement();
-            //TODO tiene que haber una tabla maquinas
-            PreparedStatement query = con.prepareStatement("SELECT * FROM maquinas WHERE tipoPiso ="+tipoPiso+
-                    " AND tipoEdificio = "+tipoEdificio+" ");
+            PreparedStatement query = con.prepareStatement("SELECT * FROM maq_exp WHERE tipopiso = ? AND tipoedificio = ?");
+            query.setString(1, tipoPis.toString());
+            query.setString(2, tipoEdif.toString());
 
             ResultSet rs = query.executeQuery();
 
-            //Atributos Maquina Expendedora
-            HashMap<String, Integer> stock =  null;
-            //Localizacion
-            float lat = -1;
-            float lon = -1;
-
+            int id;
+            float latitud = -1;
+            float longitud = -1;
+            int capacidad = -1;
+            String tipoPiso = "";
+            String tipoEdificio = "";
             while (rs.next()) {
-                //stock =
-                lat = rs.getFloat("lat");
-                lon = rs.getFloat("lon");
+                id = rs.getInt("id");
+                latitud = rs.getFloat("lat");
+                longitud = rs.getFloat("lon");
+                tipoPiso = rs.getString("tipopiso");
+                tipoEdificio = rs.getString("tipoedificio");
 
+                TipoPiso tipoPisoEnum = ConversorEnum.getTipoPiso(tipoPiso);
+                TipoEdificio tipoEdificioEnum = ConversorEnum.getTipoEdificio(tipoEdificio);
+                Localizacion localizacion = new Localizacion(latitud, longitud, tipoPisoEnum, tipoEdificioEnum);
+                listMaquinas.add(new MaquinaExpendedora(id, new HashMap<String, Integer>(), localizacion));
             }
+            for (MaquinaExpendedora maquina : listMaquinas) {
+                System.out.println("TIPO_PISO: " + maquina.getLocalizacion().getPiso() + " | TIPO_EDIFICIO: " +
+                        maquina.getLocalizacion().getEdificio() + " | COORD: "  + maquina.getLocalizacion().getLat());
+            }
+            return listMaquinas.toArray(new MaquinaExpendedora[listMaquinas.size()]);
 
-            //TipoPiso tipoPiso = ConversorEnum.getTipoPiso(tipoPisoString);
-            //TipoEdificio tipoEdificio = ConversorEnum.getTipoEdificio(tipoEdificioString);
-           // Localizacion localizacion = new Localizacion(lat, lon, tipoPiso, tipoEdificio);
-            //TODO SOLUCIONAR EL TEMA DEL STOCK EN LA BD
-           // return new MaquinaExpendedora(id, null, localizacion );
-            return null;
         } catch (SQLException e) {
             e.printStackTrace();
             return null;

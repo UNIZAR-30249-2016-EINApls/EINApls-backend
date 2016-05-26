@@ -33,7 +33,7 @@ public class RepositorioEspacios {
                 longitud = rs.getFloat("lon");
                 capacidad = rs.getInt("capacidad");
                 tipoEspacio = rs.getString("tipoespacio");
-                tipoPiso = rs.getString("tipoPiso");
+                tipoPiso = rs.getString("tipopiso");
                 tipoEdificio = rs.getString("tipoedificio");
 
                 System.out.println("TIPO_PISOOOOOO " + tipoPiso );
