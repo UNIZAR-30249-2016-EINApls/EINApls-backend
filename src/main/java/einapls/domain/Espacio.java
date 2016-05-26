@@ -1,6 +1,11 @@
 package einapls.domain;
 
 import einapls.domain.enumerations.TipoEspacio;
+import einapls.infrastructure.PoolConexiones;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * Representará un Espacio
@@ -48,7 +53,7 @@ public class Espacio {
     }
     public void actualizarBD(){
         //TODO no deja
-        /*Statement stmt = null;
+        Statement stmt = null;
         Connection con = PoolConexiones.getConex();
         try {
             stmt = con.createStatement();
@@ -58,7 +63,7 @@ public class Espacio {
             con.close();
         } catch (SQLException e) {
             e.printStackTrace();
-        }*/
+        }
     }
 
 
