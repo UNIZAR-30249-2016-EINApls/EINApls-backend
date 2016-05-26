@@ -2,11 +2,13 @@ package einapls.domain;
 
 import einapls.domain.enumerations.ConversorEnum;
 import einapls.domain.enumerations.TipoEdificio;
-import einapls.domain.enumerations.TipoEspacio;
 import einapls.domain.enumerations.TipoPiso;
 import einapls.infrastructure.PoolConexiones;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -90,5 +92,33 @@ public class RepositorioMaquinas {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public static MaquinaExpendedora[] findAllMaquinas(){
+
+        MaquinaExpendedora[] me1 = findMaquinas(TipoPiso.PISO_0, TipoEdificio.ADA_BYRON);
+        MaquinaExpendedora[] me2 = findMaquinas(TipoPiso.PISO_1, TipoEdificio.ADA_BYRON);
+        MaquinaExpendedora[] me3 = findMaquinas(TipoPiso.PISO_2, TipoEdificio.ADA_BYRON);
+        MaquinaExpendedora[] me4 = findMaquinas(TipoPiso.PISO_3, TipoEdificio.ADA_BYRON);
+
+        int i = me1.length + me2.length +me3.length +me4.length;
+        MaquinaExpendedora[] me = new MaquinaExpendedora[i];
+
+        for(int j = 0; j<i; j++){
+            for(int k=0; k<me1.length; k++){
+                me[j] = me1[k];
+            }
+            for(int k=0; k<me1.length; k++){
+                me[j] = me2[k];
+            }
+            for(int k=0; k<me1.length; k++){
+                me[j] = me3[k];
+            }
+            for(int k=0; k<me1.length; k++){
+                me[j] = me4[k];
+            }
+
+        }
+        return me;
     }
 }

@@ -39,4 +39,8 @@ public class MaquinaExpendedora {
         stock.put(producto,stockProducto);
     }
 
+    public void setStock(HashMap<String, Integer> stock){
+        this.stock = stock;
+    }
+
 }
