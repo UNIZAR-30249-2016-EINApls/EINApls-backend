@@ -15,6 +15,6 @@ import einapls.domain.enumerations.TipoPiso;
 public class TestRepositorio {
 
     public static void main (String[] args) {
-        System.out.println(RepositorioMaquinas.findMaquinas(TipoPiso.PISO_0, TipoEdificio.ADA_BYRON));
+        System.out.println(OperacionesEspacios.getEspacios(TipoPiso.PISO_0, TipoEdificio.ADA_BYRON));
     }
 }

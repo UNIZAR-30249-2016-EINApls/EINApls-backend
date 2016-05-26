@@ -15,18 +15,13 @@ import static einapls.Main.dameStockMaquinas;
  */
 public class OperacionesMaquina {
     //TODO comrpobar que funciona
-    public static String getMaquina(int id){
+    public static MaquinaExpendedora getMaquina(int id){
         //Llamamos a repositorio maquinas  para que nos devuelva la maquina con id id
         MaquinaExpendedora maquinaExpendedora = RepositorioMaquinas.findMaquina(id);
-        //Le pasamos el id de la maquina al serializar para obtener un GeoJSon
-        MaquinaExpendedora[] maquinas =  new MaquinaExpendedora[1];
-        maquinas[0] = maquinaExpendedora;
-        SerializerToGeoJson serializer = new SerializerToGeoJson(maquinas);
-        String geoJsonEspacios = serializer.serializeToGeoJson();
-        return geoJsonEspacios;
+        return maquinaExpendedora;
 
     }
-    public static String getMaquinas(TipoPiso tipoPiso, TipoEdificio tipoEdificio){
+    public static MaquinaExpendedora[] getMaquinas(TipoPiso tipoPiso, TipoEdificio tipoEdificio){
         //Llamamos a repositorio maquinas para que nos devuelva una lista con las maquinas en tipoEdificio y tipoPiso
         MaquinaExpendedora[] maquinas = RepositorioMaquinas.findMaquinas(tipoPiso,tipoEdificio);
         //Rellenamos el stock de las maquinas a devolver
@@ -42,7 +37,7 @@ public class OperacionesMaquina {
         //Le pasamos el array de Maquinas al serializar para obtener un GeoJSon
         SerializerToGeoJson serializer = new SerializerToGeoJson(maquinas);
         String geoJsonEspacios = serializer.serializeToGeoJson();
-        return geoJsonEspacios;
+        return maquinas;
 
     }
 }
