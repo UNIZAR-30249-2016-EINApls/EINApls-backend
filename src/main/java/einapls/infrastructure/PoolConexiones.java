@@ -10,7 +10,7 @@ public class PoolConexiones {
     Esto se conecta a la bd de postgresql
      */
     public static Connection getConex () {
-        System.out.println("Trying");
+        //System.out.println("Trying");
         try {
 
             Class.forName("org.postgresql.Driver");
@@ -24,7 +24,7 @@ public class PoolConexiones {
 
         }
 
-        System.out.println("PostgreSQL JDBC Driver Registered!");
+        //System.out.println("PostgreSQL JDBC Driver Registered!");
 
         Connection connection = null;
 
@@ -36,14 +36,14 @@ public class PoolConexiones {
 
         } catch (SQLException e) {
 
-            System.out.println("Connection Failed! Check output console");
+            //System.out.println("Connection Failed! Check output console");
             e.printStackTrace();
             return null;
 
         }
 
         if (connection != null) {
-            System.out.println("You made it, take control your database now!");
+            //System.out.println("You made it, take control your database now!");
             return connection;
         } else {
             System.out.println("Failed to make connection!");

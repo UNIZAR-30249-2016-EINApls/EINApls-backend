@@ -1,9 +1,6 @@
 package einapls.domain;
 
 import einapls.domain.enumerations.TipoEspacio;
-import einapls.infrastructure.PoolConexiones;
-
-import java.sql.*;
 
 /**
  * Representará un Espacio
@@ -50,17 +47,18 @@ public class Espacio {
         actualizarBD();
     }
     public void actualizarBD(){
-        Statement stmt = null;
+        //TODO no deja
+        /*Statement stmt = null;
         Connection con = PoolConexiones.getConex();
-
-        PreparedStatement query = null;
         try {
             stmt = con.createStatement();
-            String sql = "UPDATE einapls.espacio SET ocupacion=" + ocupacion + "WHERE id=" + id + ";";
+            String sql = "UPDATE einapls.espacio SET ocupacion=" + ocupacion + " WHERE id=" + id + ";";
             stmt.executeUpdate(sql);
+            stmt.close();
+            con.close();
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
 
