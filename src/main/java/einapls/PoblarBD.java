@@ -119,31 +119,31 @@ public class PoblarBD {
                     try {
                         if (id_centro.startsWith("AULA")) {
                             String sql = "INSERT INTO einapls.espacio(id, lat, lon, capacidad, tipoespacio, " +
-                                    "tipopiso, tipoedificio) VALUES (" + id + ",'" + average1 + "','" + average2 + "'," +
-                                    "50" + ",'" + "AULA" + "','" + tipoPiso + "','" + tipoEdificio + "');";
+                                    "tipopiso, tipoedificio, ocupacion) VALUES (" + id + ",'" + average1 + "','" + average2 + "'," +
+                                    "50" + ",'" + "AULA" + "','" + tipoPiso + "','" + tipoEdificio + "',0);";
                             stmt.executeUpdate(sql);
                             //System.out.println(sql);
 
                         }
                         if (id_centro.startsWith("LABORATORIO")) {
                             String sql = "INSERT INTO einapls.espacio(id, lat, lon, capacidad, tipoespacio, " +
-                                    "tipopiso, tipoedificio) VALUES (" + id + ",'" + average1 + "','" + average2 + "'," +
-                                    "20" + ",'" + "LABORATORIO" + "','" + tipoPiso + "','" + tipoEdificio + "');";
+                                    "tipopiso, tipoedificio, ocupacion) VALUES (" + id + ",'" + average1 + "','" + average2 + "'," +
+                                    "20" + ",'" + "LABORATORIO" + "','" + tipoPiso + "','" + tipoEdificio + "',0);";
                             stmt.executeUpdate(sql);
                             //System.out.println(sql);
 
                         }
                         if (id_centro.startsWith("CAFETER")) {
                             String sql = "INSERT INTO einapls.espacio(id, lat, lon, capacidad, tipoespacio, " +
-                                    "tipopiso, tipoedificio) VALUES (" + id + ",'" + average1 + "','" + average2 + "'," +
-                                    "200" + ",'" + "CAFETERIA" + "','" + tipoPiso + "','" + tipoEdificio + "');";
+                                    "tipopiso, tipoedificio, ocupacion) VALUES (" + id + ",'" + average1 + "','" + average2 + "'," +
+                                    "200" + ",'" + "CAFETERIA" + "','" + tipoPiso + "','" + tipoEdificio + "',0);";
                             stmt.executeUpdate(sql);
                             //System.out.println(sql);
                         }
                         if (id_centro.startsWith("BIBLIO")) {
                             String sql = "INSERT INTO einapls.espacio(id, lat, lon, capacidad, tipoespacio, " +
-                                    "tipopiso, tipoedificio) VALUES (" + id + ",'" + average1 + "','" + average2 + "'," +
-                                    "200" + ",'" + "BIBLIOTECA" + "','" + tipoPiso + "','" + tipoEdificio + "');";
+                                    "tipopiso, tipoedificio, ocupacion) VALUES (" + id + ",'" + average1 + "','" + average2 + "'," +
+                                    "200" + ",'" + "BIBLIOTECA" + "','" + tipoPiso + "','" + tipoEdificio + "',0);";
                             stmt.executeUpdate(sql);
                             //System.out.println(sql);
                         }

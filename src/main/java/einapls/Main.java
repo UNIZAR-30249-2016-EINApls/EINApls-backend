@@ -1,5 +1,10 @@
 package einapls;
 
+import einapls.application.SimuladorES;
+import einapls.domain.Espacio;
+import einapls.domain.RepositorioEspacios;
+import einapls.domain.enumerations.TipoEdificio;
+import einapls.domain.enumerations.TipoPiso;
 import einapls.puertosYAdaptadores.Server;
 import org.glassfish.grizzly.Grizzly;
 
@@ -16,6 +21,13 @@ public class Main {
         LOGGER.setLevel(Level.FINER);
         try (Scanner scan = new Scanner(System.in)){
             Server.startServer();
+            //Start Espacios
+            Espacio[] esps = RepositorioEspacios.findEspacios(TipoPiso.PISO_0, TipoEdificio.ADA_BYRON);
+            (new Thread(new SimuladorES(esps[0]))).start();
+
+            //TODO Start Maquinas
+
+
             LOGGER.info("Press 's'+'enter' to shutdown now the server...");
             while(!scan.nextLine().equals("s"));
         } catch (IOException ioe) {
