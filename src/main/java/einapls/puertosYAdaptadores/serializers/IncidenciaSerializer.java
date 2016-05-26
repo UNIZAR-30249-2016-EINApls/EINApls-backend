@@ -36,7 +36,7 @@ public class IncidenciaSerializer {
         return inicioGeoJson+bodyGeoJson+finGeoJson;
     }
 
-    public String serializeFeatureIncidencia(Incidencia incidencia, boolean esUltimo){
+    public static String serializeFeatureIncidencia(Incidencia incidencia, boolean esUltimo){
         //Cargamos los datos de la incidencia
         String titulo = incidencia.getTitulo();
         EstadoIncidencia estadoIncidencia = incidencia.getEstadoIncidencia();

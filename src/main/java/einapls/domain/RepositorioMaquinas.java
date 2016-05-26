@@ -56,7 +56,7 @@ public class RepositorioMaquinas {
         Statement stmt = null;
         Connection con = PoolConexiones.getConex();
         ArrayList<MaquinaExpendedora> maquinaExpendedoras;
-        
+
         try {
             stmt = con.createStatement();
             //TODO tiene que haber una tabla maquinas

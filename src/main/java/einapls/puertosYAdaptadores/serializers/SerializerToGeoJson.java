@@ -4,6 +4,8 @@ import einapls.domain.Espacio;
 import einapls.domain.Incidencia;
 import einapls.domain.MaquinaExpendedora;
 
+import java.util.ArrayList;
+
 /**
  * Created by Jorge on 25/05/2016.
  */

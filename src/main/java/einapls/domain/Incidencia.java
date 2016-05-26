@@ -10,7 +10,6 @@ public class Incidencia {
     private int id;                             //id unico
     private String titulo;                      //Titulo asignado por el usuario a la incidencia
     private EstadoIncidencia estadoIncidencia;  //Estado de la incidencia, pudiendo ser: ABIERTA, ACEPTADA y CERRADA
-    //// TODO: 25/05/2016 tema de la foto como lo manjeamos? he supuesto que con un string que indicará la ruta donde tengamos el recurso de la foto?
     private String foto;                        //Enlace a la foto
     private String descripcion;                 //Descripcion asignada por el usuario a la incidencia
     private Localizacion localizacion;
