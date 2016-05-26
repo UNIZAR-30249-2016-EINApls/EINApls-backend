@@ -27,19 +27,19 @@ public class ConversorEnum {
     //CONVERSIÓN TIPO DE PISO
     public static TipoPiso getTipoPiso (String tipoPisoString) {
         TipoPiso tipoPiso =  TipoPiso.SOTANO;
-        if (tipoPiso.equals("PISO_0")) {
+        if (tipoPisoString.equals("PISO_0")) {
             tipoPiso = TipoPiso.PISO_0;
         }
-        else if (tipoPiso.equals("PISO_1")) {
+        else if (tipoPisoString.equals("PISO_1")) {
             tipoPiso = TipoPiso.PISO_1;
         }
-        else if (tipoPiso.equals("PISO_2")) {
+        else if (tipoPisoString.equals("PISO_2")) {
             tipoPiso = TipoPiso.PISO_2;
         }
-        else if (tipoPiso.equals("PISO_3")) {
+        else if (tipoPisoString.equals("PISO_3")) {
             tipoPiso = TipoPiso.PISO_3;
         }
-        else if (tipoPiso.equals("PISO_4")) {
+        else if (tipoPisoString.equals("PISO_4")) {
             tipoPiso = TipoPiso.PISO_4;
         }
         return tipoPiso;
@@ -49,10 +49,10 @@ public class ConversorEnum {
     public static TipoEdificio getTipoEdificio (String tipoEdificioString) {
 
         TipoEdificio tipoEdificio =  TipoEdificio.ADA_BYRON;
-        if (tipoEdificio.equals("TORRES_QUEVEDO")) {
+        if (tipoEdificioString.equals("TORRES_QUEVEDO")) {
             tipoEdificio = TipoEdificio.TORRES_QUEVEDO;
         }
-        else if (tipoEdificio.equals("BETANCOURT")) {
+        else if (tipoEdificioString.equals("BETANCOURT")) {
             tipoEdificio = TipoEdificio.BETANCOURT;
         }
 

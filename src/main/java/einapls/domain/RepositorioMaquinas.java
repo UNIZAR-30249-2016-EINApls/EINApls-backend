@@ -78,11 +78,12 @@ public class RepositorioMaquinas {
 
             }
 
-            TipoPiso tipoPiso = ConversorEnum.getTipoPiso(tipoPisoString);
-            TipoEdificio tipoEdificio = ConversorEnum.getTipoEdificio(tipoEdificioString);
-            Localizacion localizacion = new Localizacion(lat, lon, tipoPiso, tipoEdificio);
+            //TipoPiso tipoPiso = ConversorEnum.getTipoPiso(tipoPisoString);
+            //TipoEdificio tipoEdificio = ConversorEnum.getTipoEdificio(tipoEdificioString);
+           // Localizacion localizacion = new Localizacion(lat, lon, tipoPiso, tipoEdificio);
             //TODO SOLUCIONAR EL TEMA DEL STOCK EN LA BD
-            return new MaquinaExpendedora(id, null, localizacion );
+           // return new MaquinaExpendedora(id, null, localizacion );
+            return null;
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
