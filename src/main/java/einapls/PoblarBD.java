@@ -142,10 +142,10 @@ public class PoblarBD {
                         }
                         if (id_centro.startsWith("BIBLIO")) {
                             String sql = "INSERT INTO einapls.espacio(id, lat, lon, capacidad, tipoespacio, " +
-                                    "tipopiso, tipoedificio) VALUES (" + id + ",'" + average1 + "','" + average2 + "','" +
+                                    "tipopiso, tipoedificio) VALUES (" + id + ",'" + average1 + "','" + average2 + "'," +
                                     "200" + ",'" + "BIBLIOTECA" + "','" + tipoPiso + "','" + tipoEdificio + "');";
                             stmt.executeUpdate(sql);
-                            System.out.println(sql);
+                            //System.out.println(sql);
                         }
                         id++;
                     } catch (SQLException e) {
