@@ -52,8 +52,8 @@ public class MaquinaSerializer {
 
         //Cargamos la localizacion de la Maquina Expendedora
         Localizacion localizacion = maquina.getLocalizacion();
-        float coordX = localizacion.getCoordX();
-        float coordY = localizacion.getCoordY();
+        float coordX = localizacion.getLat();
+        float coordY = localizacion.getLon();
 
         //Formateamos un nuevo punto con los datos obtenidos siguiendo el siguiente formato
         // ('=>variable java, no hay que poner  ')

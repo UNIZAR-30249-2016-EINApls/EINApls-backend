@@ -4,7 +4,7 @@ import einapls.domain.enumerations.TipoEdificio;
 import einapls.domain.enumerations.TipoPiso;
 
 /**
- * Operaciones relacionadas con las Incidencias
+ * Created by Jorge on 25/05/2016.
  */
 public class OperacionesIncidencias {
 

@@ -49,8 +49,8 @@ public class EspacioSerializer {
 
         //Cargamos la localizacion del espacio
         Localizacion localizacion = espacio.getLocalizacion();
-        float coordX = localizacion.getCoordX();
-        float coordY = localizacion.getCoordY();
+        float coordX = localizacion.getLat();
+        float coordY = localizacion.getLon();
 
         /*Formateamos un nuevo punto con los datos obtenidos siguiendo el siguiente formato
             { "type": "Feature",
