@@ -16,33 +16,6 @@ public class EspacioSerializer {
 
     public EspacioSerializer(Espacio[] espacios){ this.espacios=espacios; }
 
-    /*
-    public String serializeToGeoJson(){
-
-        /*Formateamos un nuevo GeoJson con los datos obtenidos siguiendo el siguiente formato:
-            {
-                "type": "FeatureCollection",
-                "features": ['bodyGeoJson']
-            }
-         *//*
-        String inicioGeoJson = "{" +
-                "\"type\" : \"FeatureCollection\"," +
-                "\"features\": [";
-        String finGeoJson = "]}";
-        String bodyGeoJson="";
-        if(espacios.length>0){
-            boolean esUltimo = false;
-            //Recorremos el array de espacios
-            for(int i=0;i<espacios.length;i++){
-                if(i==(espacios.length-1)){
-                    esUltimo=true;
-                }
-                bodyGeoJson = bodyGeoJson + serializeFeatureEspacio(espacios[i],esUltimo);
-            }
-        }
-        return inicioGeoJson+bodyGeoJson+finGeoJson;
-    }*/
-
     public static String serializeFeatureEspacio(Espacio espacio, boolean esUltimo){
         //Cargamos los datos del espacio
         int id = espacio.getId();
@@ -84,23 +57,4 @@ public class EspacioSerializer {
         }
         return  feaureEspacio;
     }
-
-/*
-*   String feaureEspacio = "{ \"type\": \"Feature\", " +
-                    "\"geometry\": { \"type\": \"Point\", \"coordinates\": [" + coordX + ", " + coordY + "]}, " +
-                    "\"properties\": {" +
-                        "\"id\": \"" + id + "\"," +
-                        "\"ocupacion\": \"" + ocupacion + "\"," +
-                        "\"tipoEspacio\": \"" + tipoEspacio.toString() + "\"" +
-                    "}" +
-                "},";
- */
-
-
-
-
-
-
-
-
 }

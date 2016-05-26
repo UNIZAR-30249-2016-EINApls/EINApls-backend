@@ -6,8 +6,7 @@ import einapls.domain.enumerations.TipoEdificio;
 import einapls.domain.enumerations.TipoPiso;
 
 import java.util.HashMap;
-import java.util.Set;
-import java.util.Enumeration;
+import java.util.Iterator;
 
 /**
  * Serializador de una Maquina Expendedora, dado un Array de Maquina Expendedora devolverá un GeoJson con la información
@@ -21,34 +20,6 @@ public class MaquinaSerializer {
     public MaquinaSerializer(MaquinaExpendedora[] maquinas){
         this.maquinas = maquinas;
     }
-/*
-    public String serializeToGeoJson(){
-
-        /*Formateamos un nuevo GeoJson con los datos obtenidos siguiendo el siguiente formato:
-            {
-                "type": "FeatureCollection",
-                "features": ['bodyGeoJson']
-            }
-         *//*
-        String inicioGeoJson = "{" +
-                "\"type\" : \"FeatureCollection\"," +
-                "\"features\": [";
-        String finGeoJson = "]}";
-        String bodyGeoJson="";
-        if(maquinas.length>0){
-            boolean esUltimo = false;
-            //Recorremos el array de espacios
-            for(int i=0;i<maquinas.length;i++){
-                if(i==(maquinas.length-1)){
-                    esUltimo=true;
-                }
-                bodyGeoJson = bodyGeoJson + serializeFeatureMaquinaExpendedora(maquinas[i],esUltimo);
-            }
-        }
-        return inicioGeoJson+bodyGeoJson+finGeoJson;
-    }
-*/
-
 
     public static String serializeFeatureMaquinaExpendedora(MaquinaExpendedora maquina, boolean esUltimo){
         //Cargamos los datos de la Maquina Expendedora
@@ -67,22 +38,32 @@ public class MaquinaSerializer {
             { "type": "Feature",
                 "geometry": {"type": "Point", "coordinates": ['lat', 'lon']},
                 "properties": {
-                    "stock": {
-                        "'key1'": "'value1'",
-                        "'key2'": "'value2'"
-                     },
+                    "stock": [
+                        {"'key1'": 'value1'},
+                        {"'key2'": 'value2'}
+                     ],
                     "tipoPiso": "'tipoEspacio'",
                     "tipoEdificio": "'tipoEspacio'"
                 }
              },
              */
 
-        //todo HACER ESTO
+        Iterator<String> iteradorStock = stock.keySet().iterator();
+        String key = "";
+        int value = -1;
+        String elementosStock="";
+        while(iteradorStock.hasNext()){
+            key = iteradorStock.next();
+            value = stock.get(key);
+            elementosStock = elementosStock + "{ " + key + " : " + value + " },";
+        }
+        //Eliminamos la coma final
+        elementosStock = elementosStock.substring(0,elementosStock.length()-1);
 
         String feaureIncidencia = "{ \"type\": \"Feature\", " +
                     "\"geometry\": { \"type\": \"Point\", \"coordinates\": [" + lat + ", " + lon + "]}, " +
                     "\"properties\": {" +
-                        "\"stock\": {}" +
+                        "\"stock\": [" + elementosStock + "]" +
                         "\"tipoPiso\": \"" + tipoPiso +"\"," +
                         "\"tipoEdificio\": \"" + tipoEdificio +"\"" +
                     "}" +
@@ -93,7 +74,4 @@ public class MaquinaSerializer {
         }
         return  feaureIncidencia;
     }
-
-
-
 }
