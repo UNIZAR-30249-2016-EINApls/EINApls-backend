@@ -70,7 +70,7 @@ public class IncidenciaSerializer {
                 "},";
         //Eliminamos la ',' sobrante al final de bodyGeoJson
         if(esUltimo){
-            feaureIncidencia = feaureIncidencia.substring(0,feaureIncidencia.length()-2);
+            feaureIncidencia = feaureIncidencia.substring(0,feaureIncidencia.length()-1);
         }
         return  feaureIncidencia;
     }
