@@ -14,7 +14,7 @@ import einapls.puertosYAdaptadores.serializers.SerializerToGeoJson;
 public class OperacionesIncidencias {
 
 
-    public void putIncidencias(String geoJsonIncidencia){
+    public void postIncidencias(String geoJsonIncidencia){
         //TODO hacerlo
     }
 
