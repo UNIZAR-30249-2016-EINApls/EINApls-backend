@@ -26,8 +26,19 @@ public class Main {
         try (Scanner scan = new Scanner(System.in)){
             Server.startServer();
             //Start Espacios
-            Espacio[] esps = RepositorioEspacios.findEspacios(TipoPiso.PISO_0, TipoEdificio.ADA_BYRON);
-            (new Thread(new SimuladorES(esps[0]))).start();
+            Espacio[] esps1 = RepositorioEspacios.findEspacios(TipoPiso.PISO_0, TipoEdificio.ADA_BYRON);
+            for(int i=0; i<esps1.length; i++){
+                (new Thread(new SimuladorES(esps1[i]))).start();
+            }
+            Espacio[] esps2 = RepositorioEspacios.findEspacios(TipoPiso.PISO_1, TipoEdificio.ADA_BYRON);
+            for(int i=0; i<esps2.length; i++){
+                (new Thread(new SimuladorES(esps2[i]))).start();
+            }
+            Espacio[] esps3 = RepositorioEspacios.findEspacios(TipoPiso.PISO_2, TipoEdificio.ADA_BYRON);
+            for(int i=0; i<esps3.length; i++){
+                (new Thread(new SimuladorES(esps3[i]))).start();
+            }
+
 
             //Start Maquinas
             MaquinaExpendedora[] mes = RepositorioMaquinas.findAllMaquinas(); //solo coje ada
