@@ -56,7 +56,7 @@ public class RepositorioEspacios {
         }
     }
 
-    public static Espacio[] findEspacios (TipoEdificio tipoEdif, TipoPiso tipoPis) {
+    public static Espacio[] findEspacios (TipoPiso tipoPis, TipoEdificio tipoEdif) {
         ArrayList<Espacio> listEspacios = new ArrayList<>();
 
         Connection con = PoolConexiones.getConex();
