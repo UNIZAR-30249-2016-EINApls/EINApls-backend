@@ -108,13 +108,13 @@ public class RepositorioMaquinas {
             for(int k=0; k<me1.length; k++){
                 me[j] = me1[k];
             }
-            for(int k=0; k<me1.length; k++){
+            for(int k=0; k<me2.length; k++){
                 me[j] = me2[k];
             }
-            for(int k=0; k<me1.length; k++){
+            for(int k=0; k<me3.length; k++){
                 me[j] = me3[k];
             }
-            for(int k=0; k<me1.length; k++){
+            for(int k=0; k<me4.length; k++){
                 me[j] = me4[k];
             }
 
