@@ -6,6 +6,8 @@ import einapls.domain.enumerations.TipoEdificio;
 import einapls.domain.enumerations.TipoPiso;
 
 import java.util.HashMap;
+import java.util.Set;
+import java.util.Enumeration;
 
 /**
  * Serializador de una Maquina Expendedora, dado un Array de Maquina Expendedora devolverá un GeoJson con la información
@@ -76,7 +78,6 @@ public class MaquinaSerializer {
              */
 
         //todo HACER ESTO
-
 
         String feaureIncidencia = "{ \"type\": \"Feature\", " +
                     "\"geometry\": { \"type\": \"Point\", \"coordinates\": [" + lat + ", " + lon + "]}, " +

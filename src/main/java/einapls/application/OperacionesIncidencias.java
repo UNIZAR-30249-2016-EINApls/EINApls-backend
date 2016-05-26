@@ -14,9 +14,8 @@ import einapls.puertosYAdaptadores.serializers.SerializerToGeoJson;
 public class OperacionesIncidencias {
 
 
-    public boolean setIncidencias(String geoJsonIncidencia){
+    public void postIncidencias(String geoJsonIncidencia){
         //TODO hacerlo
-        return false;
     }
 
     //TODO comprobar las dos ops de find
