@@ -21,9 +21,9 @@ public class SimuladorStock implements Runnable{
             if(it.hasNext()){
                 try {
                     String s = it.next();
-                    wait(10000);
+                    Thread.sleep(10000);
                     me.incrementarStock(s);
-                    wait(10000);
+                    Thread.sleep(10000);
                     me.decrementarStock(s);
 
                 } catch (InterruptedException e) {
