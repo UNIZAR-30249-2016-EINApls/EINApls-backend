@@ -2,6 +2,7 @@ package einapls;
 
 import einapls.application.OperacionesEspacios;
 import einapls.domain.RepositorioEspacios;
+import einapls.domain.RepositorioIncidencias;
 import einapls.domain.enumerations.TipoEdificio;
 import einapls.domain.enumerations.TipoPiso;
 
@@ -11,6 +12,6 @@ import einapls.domain.enumerations.TipoPiso;
 public class TestRepositorio {
 
     public static void main (String[] args) {
-        System.out.println(OperacionesEspacios.getEspacio(5));
+        System.out.println(RepositorioIncidencias.findIncidencia(3));
     }
 }

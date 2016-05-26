@@ -47,7 +47,6 @@ public class ConversorEnum {
 
     //CONVERSIÓN TIPO DE EDIFICIO
     public static TipoEdificio getTipoEdificio (String tipoEdificioString) {
-
         TipoEdificio tipoEdificio =  TipoEdificio.ADA_BYRON;
         if (tipoEdificioString.equals("TORRES_QUEVEDO")) {
             tipoEdificio = TipoEdificio.TORRES_QUEVEDO;
@@ -57,5 +56,13 @@ public class ConversorEnum {
         }
 
         return tipoEdificio;
+    }
+
+    public static EstadoIncidencia getEstadoIncidencia (String estadoIncidenciaString) {
+        EstadoIncidencia tipoIncidencia =  EstadoIncidencia.ABIERTA;
+        if (estadoIncidenciaString.equals("CERRADA")) {
+            tipoIncidencia = EstadoIncidencia.CERRADA;
+        }
+        return tipoIncidencia;
     }
 }

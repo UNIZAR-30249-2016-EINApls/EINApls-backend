@@ -58,7 +58,6 @@ public class RepositorioEspacios {
 
     public static Espacio[] findEspacios (TipoPiso tipoPis, TipoEdificio tipoEdif) {
         ArrayList<Espacio> listEspacios = new ArrayList<>();
-
         Connection con = PoolConexiones.getConex();
         try {
             PreparedStatement query = con.prepareStatement("SELECT * FROM espacio WHERE tipopiso = ? AND tipoedificio = ?");
