@@ -24,7 +24,7 @@ public class EspaciosEndpoint {
     static { LOGGER.setLevel(Level.FINER);}
 
     @GET
-    @Produces(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
     public String getEspacios(@PathParam("tipoPiso") String tipoPiso,
                               @PathParam("tipoEdificio") String tipoEdificio) {
         LOGGER.info("GET /espacios");
