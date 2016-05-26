@@ -4,6 +4,8 @@ import einapls.domain.Espacio;
 import einapls.domain.Incidencia;
 import einapls.domain.MaquinaExpendedora;
 
+import java.util.ArrayList;
+
 /**
  * Created by Jorge on 25/05/2016.
  */
@@ -32,8 +34,7 @@ public class SerializerToGeoJson {
         String finGeoJson = "]}";
         String bodyGeoJson="";
         boolean esUltimo = false;
-
-        if(!espacios.equals(null)){
+        if(espacios != null){
             //ESPACIOS
             if(espacios.length>0){
                 for(int i=0;i<espacios.length;i++){
@@ -41,7 +42,8 @@ public class SerializerToGeoJson {
                     bodyGeoJson = bodyGeoJson + EspacioSerializer.serializeFeatureEspacio(espacios[i],esUltimo);
                 }
             }
-        }else if(!incidencias.equals(null)){
+        }
+        else if(incidencias != null){
             //INCIDENCIAS
             if(incidencias.length>0){
                 for(int i=0;i<incidencias.length;i++){
@@ -49,8 +51,9 @@ public class SerializerToGeoJson {
                     bodyGeoJson = bodyGeoJson + IncidenciaSerializer.serializeFeatureIncidencia(incidencias[i],esUltimo);
                 }
             }
-        }else{
-            //MAQINAS
+        }
+        else{
+            //MAQUINAS
             if(maquinas.length>0){
                 for(int i=0;i<maquinas.length;i++){
                     if(i==(maquinas.length-1)){ esUltimo=true; }

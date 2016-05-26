@@ -2,6 +2,8 @@ package einapls.puertosYAdaptadores.serializers;
 
 import einapls.domain.Localizacion;
 import einapls.domain.MaquinaExpendedora;
+import einapls.domain.enumerations.TipoEdificio;
+import einapls.domain.enumerations.TipoPiso;
 
 import java.util.HashMap;
 
@@ -52,19 +54,23 @@ public class MaquinaSerializer {
 
         //Cargamos la localizacion de la Maquina Expendedora
         Localizacion localizacion = maquina.getLocalizacion();
-        float coordX = localizacion.getCoordX();
-        float coordY = localizacion.getCoordY();
+        float lat = localizacion.getLat();
+        float lon = localizacion.getLon();
+        TipoPiso tipoPiso = localizacion.getPiso();
+        TipoEdificio tipoEdificio = localizacion.getEdificio();
 
         //Formateamos un nuevo punto con los datos obtenidos siguiendo el siguiente formato
         // ('=>variable java, no hay que poner  ')
             /*
             { "type": "Feature",
-                "geometry": {"type": "Point", "coordinates": ['coordX', 'coordY']},
+                "geometry": {"type": "Point", "coordinates": ['lat', 'lon']},
                 "properties": {
                     "stock": {
                         "'key1'": "'value1'",
                         "'key2'": "'value2'"
-                     }
+                     },
+                    "tipoPiso": "'tipoEspacio'",
+                    "tipoEdificio": "'tipoEspacio'"
                 }
              },
              */
@@ -73,11 +79,12 @@ public class MaquinaSerializer {
 
 
         String feaureIncidencia = "{ \"type\": \"Feature\", " +
-                "\"geometry\": { \"type\": \"Point\", \"coordinates\": [" + coordX + ", " + coordY + "]}, " +
-                "\"properties\": {" +
-                "\"stock\": {}" +
-
-                "}" +
+                    "\"geometry\": { \"type\": \"Point\", \"coordinates\": [" + lat + ", " + lon + "]}, " +
+                    "\"properties\": {" +
+                        "\"stock\": {}" +
+                        "\"tipoPiso\": \"" + tipoPiso +"\"," +
+                        "\"tipoEdificio\": \"" + tipoEdificio +"\"" +
+                    "}" +
                 "},";
         //Eliminamos la ',' sobrante al final de bodyGeoJson
         if(esUltimo){

@@ -1,47 +1,105 @@
 package einapls.domain;
 
+import einapls.domain.enumerations.ConversorEnum;
 import einapls.domain.enumerations.TipoEdificio;
+import einapls.domain.enumerations.TipoEspacio;
+import einapls.domain.enumerations.TipoPiso;
 import einapls.infrastructure.PoolConexiones;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 /**
  * Clase que se comunicará con e respositorio donde se encuentran los espacios
  */
 public class RepositorioEspacios {
 
-    //// TODO: 25/05/2016 TODO la implementacion, actualmente todo falseado
     public static Espacio findEspacio (int id) {
-        Statement stmt = null;
         Connection con = PoolConexiones.getConex();
         try {
-            stmt = con.createStatement();
-            PreparedStatement query = con.prepareStatement("SELECT * FROM adabyron_0 WHERE id = ?");
+            PreparedStatement query = con.prepareStatement("SELECT * FROM espacio WHERE id = ?");
             query.setInt(1, id);
 
             ResultSet rs = query.executeQuery();
-            String id_centro = "";
-            while(rs.next()) {
-                long idd = rs.getLong("id");
-                String geom = rs.getString("geom");
-                String layer = rs.getString("layer");
-                String id_utc = rs.getString("id_utc");
-                id_centro = rs.getString("id_centro");
-                String tipo_de_uso = rs.getString("tipo_de_us");
-                String area_gem = rs.getString("area_geom");
-                System.out.println("IDD: " + idd);
 
+            float latitud = -1;
+            float longitud = -1;
+            int capacidad = -1;
+            String tipoEspacio = "";
+            String tipoPiso = "";
+            String tipoEdificio = "";
+            if (rs.next()) {
+                latitud = rs.getFloat("lat");
+                longitud = rs.getFloat("lon");
+                capacidad = rs.getInt("capacidad");
+                tipoEspacio = rs.getString("tipoespacio");
+                tipoPiso = rs.getString("tipoPiso");
+                tipoEdificio = rs.getString("tipoedificio");
+
+                System.out.println("TIPO_PISOOOOOO " + tipoPiso );
+                TipoEspacio tipoEspacioEnum = ConversorEnum.getTipoEspacio(tipoEspacio);
+                TipoPiso tipoPisoEnum = ConversorEnum.getTipoPiso(tipoPiso);
+                TipoEdificio tipoEdificioEnum = ConversorEnum.getTipoEdificio(tipoEdificio);
+                Localizacion localizacion = new Localizacion(latitud, longitud, tipoPisoEnum, tipoEdificioEnum);
+
+                System.out.println("TIPO_PISO: " + tipoPisoEnum.toString() + " | TIPO_EDIFICIO: "
+                        + tipoEdificioEnum.toString() + " | TIPO_ESPACIO: "  + tipoEspacioEnum.toString());
+
+                //TODO: La ocupación la ofrece el servicio Disponibilidad
+                return new Espacio(id, capacidad, 0, tipoEspacioEnum, localizacion);
             }
-
+            else return null;
 
         } catch (SQLException e) {
             e.printStackTrace();
+            return null;
         }
-    return null;
-
     }
 
-    public static Espacio[] findEspacios (TipoEdificio tipoEdificio, int id) {
-        return null;
+    public static Espacio[] findEspacios (TipoPiso tipoPis, TipoEdificio tipoEdif) {
+        ArrayList<Espacio> listEspacios = new ArrayList<>();
+        Connection con = PoolConexiones.getConex();
+        try {
+            PreparedStatement query = con.prepareStatement("SELECT * FROM espacio WHERE tipopiso = ? AND tipoedificio = ?");
+            query.setString(1, tipoPis.toString());
+            query.setString(2, tipoEdif.toString());
+
+            ResultSet rs = query.executeQuery();
+
+            int i = 0;
+            int id;
+            float latitud = -1;
+            float longitud = -1;
+            int capacidad = -1;
+            String tipoEspacio = "";
+            String tipoPiso = "";
+            String tipoEdificio = "";
+            while (rs.next()) {
+                id = rs.getInt("id");
+                latitud = rs.getFloat("lat");
+                longitud = rs.getFloat("lon");
+                capacidad = rs.getInt("capacidad");
+                tipoEspacio = rs.getString("tipoespacio");
+                tipoPiso = rs.getString("tipoPiso");
+                tipoEdificio = rs.getString("tipoedificio");
+
+                TipoEspacio tipoEspacioEnum = ConversorEnum.getTipoEspacio(tipoEspacio);
+                TipoPiso tipoPisoEnum = ConversorEnum.getTipoPiso(tipoPiso);
+                TipoEdificio tipoEdificioEnum = ConversorEnum.getTipoEdificio(tipoEdificio);
+                Localizacion localizacion = new Localizacion(latitud, longitud, tipoPisoEnum, tipoEdificioEnum);
+                listEspacios.add(new Espacio(id, capacidad, 0, tipoEspacioEnum, localizacion));
+            }
+            for (Espacio espacio : listEspacios) {
+                System.out.println("TIPO_PISO: " + espacio.getLocalizacion().getPiso() + " | TIPO_EDIFICIO: " +
+                        espacio.getLocalizacion().getEdificio() + " | TIPO_ESPACIO: "  + espacio.getTipo());
+            }
+
+            return listEspacios.toArray(new Espacio[listEspacios.size()]);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+
     }
 }

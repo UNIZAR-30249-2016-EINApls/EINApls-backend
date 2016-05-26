@@ -6,7 +6,7 @@ import einapls.domain.enumerations.TipoPiso;
 /**
  * Operaciones relacionadas con los Maquinas
  */
-public class OperacionesMaquima {
+public class OperacionesMaquina {
 
     public String getMaquinas(TipoEdificio tipoEdificio, TipoPiso tipoPiso){
         //TODO hacerlo

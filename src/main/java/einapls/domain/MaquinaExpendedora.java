@@ -28,14 +28,12 @@ public class MaquinaExpendedora {
 
     //SETTERs
     public void incrementarStock(String producto) {
-//// TODO: 25/05/2016 Comprobar que funciona
         int stockProducto = stock.get(producto);
         stockProducto++;
         stock.put(producto,stockProducto);
     }
 
     public void decrementarStock(String producto) {
-//// TODO: 25/05/2016 Comprobar que funciona
         int stockProducto = stock.get(producto);
         stockProducto--;
         stock.put(producto,stockProducto);
