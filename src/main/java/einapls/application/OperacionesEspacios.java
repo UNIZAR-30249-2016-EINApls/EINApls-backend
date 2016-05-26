@@ -11,19 +11,19 @@ import einapls.puertosYAdaptadores.serializers.SerializerToGeoJson;
  */
 public class OperacionesEspacios {
 
-    public String getEspacio (int id){
+    public static String getEspacio (int id){
         //TODO getEspacio revisarlo
         //Llamamos a repositorio espacios para que nos devuelva una lista con los esacios en tipoEdificio y tipoPiso
         Espacio espacio = RepositorioEspacios.findEspacio(id);
         //Le pasamos el array de Espacios al serializar para obtener un GeoJSon
         Espacio[] espacios = new Espacio[1];
-        espacios[1] = espacio;
+        espacios[0] = espacio;
         SerializerToGeoJson serializer = new SerializerToGeoJson(espacios);
         String geoJsonEspacios = serializer.serializeToGeoJson();
         return geoJsonEspacios;
     }
 
-    public String getEspacios (TipoEdificio tipoEdificio, TipoPiso tipoPiso){
+    public static String getEspacios (TipoEdificio tipoEdificio, TipoPiso tipoPiso){
         //TODO getEspacios revisarlo
         //Llamamos a repositorio espacios para que nos devuelva una lista con los esacios en tipoEdificio y tipoPiso
         Espacio[] espacios = RepositorioEspacios.findEspacios(tipoEdificio, tipoPiso);

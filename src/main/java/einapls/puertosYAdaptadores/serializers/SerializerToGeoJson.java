@@ -52,7 +52,7 @@ public class SerializerToGeoJson {
                 }
             }
         }else{
-            //MAQINAS
+            //MAQUINAS
             if(maquinas.length>0){
                 for(int i=0;i<maquinas.length;i++){
                     if(i==(maquinas.length-1)){ esUltimo=true; }

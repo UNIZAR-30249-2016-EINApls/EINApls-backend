@@ -72,7 +72,7 @@ public class EspacioSerializer {
                 "},";
         //Eliminamos la ',' sobrante al final de bodyGeoJson
         if(esUltimo){
-            feaureEspacio = feaureEspacio.substring(0,feaureEspacio.length()-2);
+            feaureEspacio = feaureEspacio.substring(0,feaureEspacio.length()-1);
         }
         return  feaureEspacio;
     }
