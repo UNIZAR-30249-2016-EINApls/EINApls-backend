@@ -20,7 +20,7 @@ public class OperacionesIncidencias {
     }
 
     //TODO comprobar las dos ops de find
-    public String getIncidencia(int id){
+    public static String getIncidencia(int id){
         //Llamamos a repositorio incidencias para que nos devuelva la incidencia con id id
         Incidencia incidencia = RepositorioIncidencias.findIncidencia(id);
         //Le pasamos el id de la incidencia al serializar para obtener un GeoJSon
@@ -31,7 +31,7 @@ public class OperacionesIncidencias {
         return geoJsonIncidencias;
     }
 
-    public String getIncidencias(TipoPiso tipoPiso, TipoEdificio tipoEdificio){
+    public static String getIncidencias(TipoPiso tipoPiso, TipoEdificio tipoEdificio){
         //Llamamos a repositorio incidencias para que nos devuelva una lista con las incidencias en tipoEdificio y tipoPiso
         Incidencia[] incidencias = RepositorioIncidencias.findIncidencias(tipoPiso, tipoEdificio);
         //Le pasamos el array de Incidencias al serializar para obtener un GeoJSon

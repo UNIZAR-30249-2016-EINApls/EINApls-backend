@@ -65,7 +65,7 @@ public class RepositorioIncidencias {
         }
     }
 
-    public static Incidencia[] findIncidencias(TipoEdificio tipoEdif, TipoPiso tipoPis) {
+    public static Incidencia[] findIncidencias( TipoPiso tipoPis, TipoEdificio tipoEdif) {
         ArrayList<Incidencia> listIncidencias = new ArrayList<>();
         Connection con = PoolConexiones.getConex();
         try {
