@@ -14,7 +14,6 @@ import java.util.Iterator;
  */
 public class MaquinaSerializer {
 
-
     private MaquinaExpendedora[] maquinas;
 
     public MaquinaSerializer(MaquinaExpendedora[] maquinas){
@@ -52,25 +51,32 @@ public class MaquinaSerializer {
         String key = "";
         int value = -1;
         String elementosStock="";
-        while(iteradorStock.hasNext()){
-            key = iteradorStock.next();
-            value = stock.get(key);
-            elementosStock = elementosStock + "{ " + key + " : " + value + " },";
-        }
-        //Eliminamos la coma final
-        elementosStock = elementosStock.substring(0,elementosStock.length()-1);
 
+        if(!stock.isEmpty()){
+
+
+            while(iteradorStock.hasNext()){
+                key = iteradorStock.next();
+                value = stock.get(key);
+                elementosStock = elementosStock + "{ " + key + " : " + value + " },";
+            }
+
+
+            elementosStock = elementosStock.substring(0, elementosStock.length() - 1);
+
+
+        }
         String feaureIncidencia = "{ \"type\": \"Feature\", " +
-                    "\"geometry\": { \"type\": \"Point\", \"coordinates\": [" + lat + ", " + lon + "]}, " +
-                    "\"properties\": {" +
-                        "\"stock\": [" + elementosStock + "]" +
-                        "\"tipoPiso\": \"" + tipoPiso +"\"," +
-                        "\"tipoEdificio\": \"" + tipoEdificio +"\"" +
-                    "}" +
-                "},";
+                                        "\"geometry\": { \"type\": \"Point\", \"coordinates\": [" + lat + ", " + lon + "]}, " +
+                                        "\"properties\": {" +
+                                            "\"stock\": [" + elementosStock + "]," +
+                                            "\"tipoPiso\": \"" + tipoPiso +"\"," +
+                                            "\"tipoEdificio\": \"" + tipoEdificio +"\"" +
+                                        "}" +
+                                    "},";
         //Eliminamos la ',' sobrante al final de bodyGeoJson
         if(esUltimo){
-            feaureIncidencia = feaureIncidencia.substring(0,feaureIncidencia.length()-2);
+            feaureIncidencia = feaureIncidencia.substring(0,feaureIncidencia.length()-1);
         }
         return  feaureIncidencia;
     }
