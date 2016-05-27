@@ -27,7 +27,7 @@ public class Main {
             }*/
 
             //Start Maquinas
-            MaquinaExpendedora[] mes = RepositorioMaquinas.findAllMaquinas(); //solo coje ada
+            mes = RepositorioMaquinas.findAllMaquinas(); //solo coje ada
             HashMap<String, Integer> hm = new HashMap<>();
             hm.put("Patatas",3);
             hm.put("Chocolate",4);
