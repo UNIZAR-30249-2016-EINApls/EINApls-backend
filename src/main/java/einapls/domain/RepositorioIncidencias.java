@@ -70,7 +70,7 @@ public class RepositorioIncidencias {
         ArrayList<Incidencia> listIncidencias = new ArrayList<>();
         Incidencia incidencia = null;
         try {
-            PreparedStatement query = con.prepareStatement("SELECT * FROM incidencia WHERE piso = ? AND edificio = ?");
+            PreparedStatement query = con.prepareStatement("SELECT * FROM incidencia WHERE tipopiso = ? AND tipoedificio = ?");
             query.setString(1, tipoPis.toString());
             query.setString(2, tipoEdif.toString());
             ResultSet rs = query.executeQuery();
@@ -104,7 +104,7 @@ public class RepositorioIncidencias {
             Localizacion localizacion = new Localizacion(latitud, longitud, tipoPisoEnum, tipoEdificioEnum);
 
             //Creamos la incidencia
-            incidencia= new Incidencia(id, titulo, EstadoIncidencia.ABIERTA, foto,  descripcion, localizacion);
+            incidencia= new Incidencia(id, titulo, estadoIncidenciaEnum, foto,  descripcion, localizacion);
 
         } catch (SQLException e) {
             e.printStackTrace();
