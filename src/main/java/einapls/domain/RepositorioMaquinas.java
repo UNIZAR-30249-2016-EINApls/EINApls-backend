@@ -94,31 +94,45 @@ public class RepositorioMaquinas {
         }
     }
 
-    public static MaquinaExpendedora[] findAllMaquinas(){
+    /**
+     * Copia de findMaquinas pero devuelve todas las maquinas
+     * @return
+     */
+    public static MaquinaExpendedora[] findAllMaquinas() {
+        ArrayList<MaquinaExpendedora> listMaquinas = new ArrayList<>();
+        Connection con = PoolConexiones.getConex();
+        try {
+            PreparedStatement query = con.prepareStatement("SELECT * FROM maq_exp");
 
-        MaquinaExpendedora[] me1 = findMaquinas(TipoPiso.PISO_0, TipoEdificio.ADA_BYRON);
-        MaquinaExpendedora[] me2 = findMaquinas(TipoPiso.PISO_1, TipoEdificio.ADA_BYRON);
-        MaquinaExpendedora[] me3 = findMaquinas(TipoPiso.PISO_2, TipoEdificio.ADA_BYRON);
-        MaquinaExpendedora[] me4 = findMaquinas(TipoPiso.PISO_3, TipoEdificio.ADA_BYRON);
+            ResultSet rs = query.executeQuery();
 
-        int i = me1.length + me2.length +me3.length +me4.length;
-        MaquinaExpendedora[] me = new MaquinaExpendedora[i];
+            int id;
+            float latitud = -1;
+            float longitud = -1;
+            int capacidad = -1;
+            String tipoPiso = "";
+            String tipoEdificio = "";
+            while (rs.next()) {
+                id = rs.getInt("id");
+                latitud = rs.getFloat("lat");
+                longitud = rs.getFloat("lon");
+                tipoPiso = rs.getString("tipopiso");
+                tipoEdificio = rs.getString("tipoedificio");
 
-        for(int j = 0; j<i; j++){
-            for(int k=0; k<me1.length; k++){
-                me[j] = me1[k];
+                TipoPiso tipoPisoEnum = ConversorEnum.getTipoPiso(tipoPiso);
+                TipoEdificio tipoEdificioEnum = ConversorEnum.getTipoEdificio(tipoEdificio);
+                Localizacion localizacion = new Localizacion(latitud, longitud, tipoPisoEnum, tipoEdificioEnum);
+                listMaquinas.add(new MaquinaExpendedora(id, new HashMap<String, Integer>(), localizacion));
             }
-            for(int k=0; k<me2.length; k++){
-                me[j] = me2[k];
+            for (MaquinaExpendedora maquina : listMaquinas) {
+                System.out.println("TIPO_PISO: " + maquina.getLocalizacion().getPiso() + " | TIPO_EDIFICIO: " +
+                        maquina.getLocalizacion().getEdificio() + " | COORD: "  + maquina.getLocalizacion().getLat());
             }
-            for(int k=0; k<me3.length; k++){
-                me[j] = me3[k];
-            }
-            for(int k=0; k<me4.length; k++){
-                me[j] = me4[k];
-            }
+            return listMaquinas.toArray(new MaquinaExpendedora[listMaquinas.size()]);
 
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
         }
-        return me;
     }
 }

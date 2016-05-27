@@ -13,13 +13,14 @@ public class SimuladorES implements Runnable{
     }
     @Override
     public void run() {
-        /*for(int i=0; i<10; i++){
+        for(int i=0; i<10; i++){
             espacio.incrementarOcupacion();
-        }*/
+        }
 
         while(true){
             try {
                 Thread.sleep(10000);
+                espacio.incrementarOcupacion();
                 espacio.incrementarOcupacion();
                 Thread.sleep(10000);
                 espacio.decrementarOcupacion();

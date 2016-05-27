@@ -1,12 +1,14 @@
 package einapls.application;
 
-import einapls.domain.Espacio;
 import einapls.domain.Incidencia;
-import einapls.domain.RepositorioEspacios;
 import einapls.domain.RepositorioIncidencias;
 import einapls.domain.enumerations.TipoEdificio;
 import einapls.domain.enumerations.TipoPiso;
-import einapls.puertosYAdaptadores.serializers.SerializerToGeoJson;
+import einapls.infrastructure.PoolConexiones;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * Created by Jorge on 25/05/2016.
@@ -14,8 +16,19 @@ import einapls.puertosYAdaptadores.serializers.SerializerToGeoJson;
 public class OperacionesIncidencias {
 
 
-    public void postIncidencias(String geoJsonIncidencia){
-        //TODO hacerlo
+    public static void postIncidencias(Incidencia incidencia) throws SQLException {
+        Connection c = PoolConexiones.getConex();
+        Statement stmt = c.createStatement();
+        String sql = "INSERT INTO einapls.incidencia(\n" +
+                "            edificio, piso, foto, estado, titulo, descripcion, lat, lon)\n" +
+                "    VALUES ('" + incidencia.getLocalizacion().getEdificio() + "', '"+
+                incidencia.getLocalizacion().getPiso() + "', '"+
+                incidencia.getFoto() + "', '"+ incidencia.getEstadoIncidencia() + "', '"+
+                incidencia.getTitulo() + "', '"+incidencia.getDescripcion() + "', '"+
+                incidencia.getLocalizacion().getLat() + "', '"+
+                incidencia.getLocalizacion().getLon() + "', '"+
+                ");";
+        stmt.executeUpdate(sql);
     }
 
     //TODO comprobar las dos ops de find
