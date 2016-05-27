@@ -58,14 +58,14 @@ public class MaquinaSerializer {
             while(iteradorStock.hasNext()){
                 key = iteradorStock.next();
                 value = stock.get(key);
-                elementosStock = elementosStock + "{ \"" + key + "\" : " + value + " },";
+                elementosStock = elementosStock + "\"" + key + "\" : " + value + ",";
             }
             elementosStock = elementosStock.substring(0, elementosStock.length() - 1);
         }
         String feaureIncidencia = "{ \"type\": \"Feature\", " +
                                         "\"geometry\": { \"type\": \"Point\", \"coordinates\": [" + lat + ", " + lon + "]}, " +
                                         "\"properties\": {" +
-                                            "\"stock\": [" + elementosStock + "]," +
+                                            "\"stock\": {" + elementosStock + "}," +
                                             "\"tipoPiso\": \"" + tipoPiso +"\"," +
                                             "\"tipoEdificio\": \"" + tipoEdificio +"\"" +
                                         "}" +
