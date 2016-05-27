@@ -14,6 +14,7 @@ import java.util.ArrayList;
  */
 public class RepositorioEspacios {
 
+    //Buscará en la BD un espacio con id id y devolvera un objeto espacio con el resto de atributos
     public static Espacio findEspacio (int id) {
         Connection con = PoolConexiones.getConex();
         Espacio espacio = null;
@@ -30,7 +31,8 @@ public class RepositorioEspacios {
         return espacio;
     }
 
-    public static Espacio[] findEspacios (TipoPiso tipoPis, TipoEdificio tipoEdif) {
+    //Buscara en la BD todos aquellos epsacios que esten en el piso
+    public static Espacio[] findEspacios (TipoPiso tipoPiso, TipoEdificio tipoEdificio) {
 
         Connection con = PoolConexiones.getConex();
         ArrayList<Espacio> listEspacios = new ArrayList<>();
@@ -38,8 +40,8 @@ public class RepositorioEspacios {
 
         try {
             PreparedStatement query = con.prepareStatement("SELECT * FROM espacio WHERE tipopiso = ? AND tipoedificio = ?");
-            query.setString(1, tipoPis.toString());
-            query.setString(2, tipoEdif.toString());
+            query.setString(1, tipoPiso.toString());
+            query.setString(2, tipoEdificio.toString());
 
             ResultSet rs = query.executeQuery();
 
@@ -162,6 +164,7 @@ public class RepositorioEspacios {
 
 
 
+    //// TODO: 27/05/2016 eliminar los comentarios estos si no hace falta nada 
     //esto de dentro del fin varios espacios
     /*
     try {
