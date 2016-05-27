@@ -20,7 +20,7 @@ public class SerializerToGeoJson {
     public SerializerToGeoJson(Incidencia[] incidencias){ this.incidencias = incidencias; }
     public SerializerToGeoJson(MaquinaExpendedora[] maquinas){ this.maquinas = maquinas; }
 
-    public String serializeToGeoJson(){
+    public String DoSerializeToGeoJson(){
 
         /*Formateamos un nuevo GeoJson con los datos obtenidos siguiendo el siguiente formato:
             {

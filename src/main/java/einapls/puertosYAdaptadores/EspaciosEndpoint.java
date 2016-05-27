@@ -34,7 +34,7 @@ public class EspaciosEndpoint {
         Espacio[] espacios = OperacionesEspacios.getEspacios(tipoPis, tipoEdif);
         //Le pasamos el array de Espacios al serializar para obtener un GeoJSon
         SerializerToGeoJson serializer = new SerializerToGeoJson(espacios);
-        String geoJsonEspacios = serializer.serializeToGeoJson();
+        String geoJsonEspacios = serializer.DoSerializeToGeoJson();
         return geoJsonEspacios;
 
     }

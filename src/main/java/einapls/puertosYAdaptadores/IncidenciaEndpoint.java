@@ -32,7 +32,7 @@ public class IncidenciaEndpoint {
         Incidencia[] incidencias = new Incidencia[1];
         incidencias[0] = OperacionesIncidencias.getIncidencia(Integer.parseInt(id));
         SerializerToGeoJson serializer = new SerializerToGeoJson(incidencias);
-        String geoJsonIncidencias = serializer.serializeToGeoJson();
+        String geoJsonIncidencias = serializer.DoSerializeToGeoJson();
         return geoJsonIncidencias;
 
     }

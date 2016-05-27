@@ -30,7 +30,7 @@ public class EspacioEndpoint {
         Espacio[] espacios = new Espacio[1];
         espacios[0] = OperacionesEspacios.getEspacio(Integer.parseInt(id));
         SerializerToGeoJson serializer = new SerializerToGeoJson(espacios);
-        String geoJsonEspacios = serializer.serializeToGeoJson();
+        String geoJsonEspacios = serializer.DoSerializeToGeoJson();
         return geoJsonEspacios;
 
     }

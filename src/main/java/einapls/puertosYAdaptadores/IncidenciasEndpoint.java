@@ -34,7 +34,7 @@ public class IncidenciasEndpoint {
         Incidencia[] incidencias = OperacionesIncidencias.getIncidencias(tipoPiso, tipoEdificio);
         //Le pasamos el array de Incidencias al serializar para obtener un GeoJSon
         SerializerToGeoJson serializer = new SerializerToGeoJson(incidencias);
-        String geoJsonEspacios = serializer.serializeToGeoJson();
+        String geoJsonEspacios = serializer.DoSerializeToGeoJson();
         return geoJsonEspacios;
 
 

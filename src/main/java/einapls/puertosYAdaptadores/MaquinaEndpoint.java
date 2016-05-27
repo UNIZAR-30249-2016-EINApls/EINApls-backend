@@ -32,7 +32,7 @@ public class MaquinaEndpoint {
         MaquinaExpendedora[] maquinas =  new MaquinaExpendedora[1];
         maquinas[0] = OperacionesMaquina.getMaquina(Integer.parseInt(id));
         SerializerToGeoJson serializer = new SerializerToGeoJson(maquinas);
-        String geoJsonEspacios = serializer.serializeToGeoJson();
+        String geoJsonEspacios = serializer.DoSerializeToGeoJson();
         return geoJsonEspacios;
 
     }

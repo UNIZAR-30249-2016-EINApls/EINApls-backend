@@ -34,7 +34,7 @@ public class MaquinasEndpoint {
         MaquinaExpendedora[] maquinas = OperacionesMaquina.getMaquinas(tipoPiso, tipoEdificio);
         //Le pasamos el array de Maquinas al serializar para obtener un GeoJSon
         SerializerToGeoJson serializer = new SerializerToGeoJson(maquinas);
-        String geoJsonEspacios = serializer.serializeToGeoJson();
+        String geoJsonEspacios = serializer.DoSerializeToGeoJson();
         return geoJsonEspacios;
 
 
