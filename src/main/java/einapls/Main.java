@@ -1,10 +1,12 @@
 package einapls;
 
 import einapls.domain.MaquinaExpendedora;
+import einapls.domain.RepositorioMaquinas;
 import einapls.puertosYAdaptadores.Server;
 import org.glassfish.grizzly.Grizzly;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,7 +24,7 @@ public class Main {
             //TODO solo coge 5 espacios
             for(int i=0; i<5; i++){
                 (new Thread(new SimuladorES(esps[i]))).start();
-            }
+            }*/
 
             //Start Maquinas
             MaquinaExpendedora[] mes = RepositorioMaquinas.findAllMaquinas(); //solo coje ada
@@ -31,8 +33,8 @@ public class Main {
             hm.put("Chocolate",4);
             for(int i=0; i<mes.length; i++){
                 mes[i].setStock(hm);
-                (new Thread(new SimuladorStock(mes[i]))).start();
-            }*/
+                //(new Thread(new SimuladorStock(mes[i]))).start();
+            }
 
             LOGGER.info("Press 's'+'enter' to shutdown now the server...");
             while(!scan.nextLine().equals("s"));
