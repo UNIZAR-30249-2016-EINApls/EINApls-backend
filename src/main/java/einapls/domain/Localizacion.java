@@ -1,5 +1,6 @@
 package einapls.domain;
 
+import einapls.domain.enumerations.ConversorEnum;
 import einapls.domain.enumerations.TipoEdificio;
 import einapls.domain.enumerations.TipoPiso;
 
@@ -23,8 +24,8 @@ public class Localizacion {
     }
 
     public Localizacion(String lat, String lon, String tipoPiso, String tipoEdificio){
-        TipoPiso tp = null;
-        if(tipoPiso.equals("PISO_0")){
+        TIPOPISO = ConversorEnum.getTipoPiso(tipoPiso);
+        /*if(tipoPiso.equals("PISO_0")){
             tp = TipoPiso.PISO_0;
         }else if(tipoPiso.equals("PISO_1")){
             tp = TipoPiso.PISO_1;
@@ -38,6 +39,9 @@ public class Localizacion {
             tp = TipoPiso.SOTANO;
         }
         TIPOPISO = tp;
+        */
+        TIPOEDIFICIO = ConversorEnum.getTipoEdificio(tipoEdificio);
+        /*
         TipoEdificio te = null;
         if(tipoEdificio.equals("ADA_BYRON")){
             te = TipoEdificio.ADA_BYRON;
@@ -47,7 +51,7 @@ public class Localizacion {
             te = TipoEdificio.BETANCOURT;
         }
         TIPOEDIFICIO = te;
-
+        */
         this.lon = Long.parseLong(lon);
         this.lat = Long.parseLong(lat);
     }
