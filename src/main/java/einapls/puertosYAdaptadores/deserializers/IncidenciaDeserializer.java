@@ -17,7 +17,6 @@ public class IncidenciaDeserializer {
 
     public static Incidencia deserializeGeoJsonIncidencia(String geoJsonIncidencia){
 
-
          /*Dado:
             {
                 "type": "FeatureCollection",
@@ -81,10 +80,9 @@ public class IncidenciaDeserializer {
         //Construimos la localizacion
         Localizacion localizacion =  new Localizacion(lat,lon,tipoPiso,tipoEdificio);
 
-        //Contruimos la incidencia y la devolvemos
-        Incidencia incidencia = null;
-        int id = incidencia.getNumIncidencia() + 1;
-        incidencia = new Incidencia(id,titulo,estadoIncidencia,foto,descripcion,localizacion);
+        //Contruimos la incidencia y la devolvemos (ID=0 porque cuando la cargamos por primera vez a la BD, se le asigna uno)
+        Incidencia incidencia = new Incidencia(0,titulo,estadoIncidencia,foto,descripcion,localizacion);
+
         return incidencia;
     }
 

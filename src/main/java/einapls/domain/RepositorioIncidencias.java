@@ -80,7 +80,6 @@ public class RepositorioIncidencias {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-
         }
         return listIncidencias.toArray(new Incidencia[listIncidencias.size()]);
     }
