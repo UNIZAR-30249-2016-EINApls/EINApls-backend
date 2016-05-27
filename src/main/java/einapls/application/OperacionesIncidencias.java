@@ -4,11 +4,6 @@ import einapls.domain.Incidencia;
 import einapls.domain.RepositorioIncidencias;
 import einapls.domain.enumerations.TipoEdificio;
 import einapls.domain.enumerations.TipoPiso;
-import einapls.infrastructure.PoolConexiones;
-
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 /**
  * Created by Jorge on 25/05/2016.
@@ -16,19 +11,9 @@ import java.sql.Statement;
 public class OperacionesIncidencias {
 
 
-    public static void postIncidencias(Incidencia incidencia) throws SQLException {
-        Connection c = PoolConexiones.getConex();
-        Statement stmt = c.createStatement();
-        String sql = "INSERT INTO einapls.incidencia(\n" +
-                "                           edificio, piso, foto, estado, titulo, descripcion, lat, lon)\n" +
-                "    VALUES ('" + incidencia.getLocalizacion().getEdificio() + "', '"+
-                                    incidencia.getLocalizacion().getPiso() + "', '"+
-                                    incidencia.getFoto() + "', '"+ incidencia.getEstadoIncidencia() + "', '"+
-                                    incidencia.getTitulo() + "', '"+incidencia.getDescripcion() + "', '"+
-                                    incidencia.getLocalizacion().getLat() + "', '"+
-                                    incidencia.getLocalizacion().getLon() + "', '"+
-                                    ");";
-        stmt.executeUpdate(sql);
+    public static Incidencia postIncidencias(Incidencia incidencia){
+        int id = RepositorioIncidencias.createIncidencia(incidencia);
+        return getIncidencia(id);
     }
 
     public static Incidencia getIncidencia(int id){

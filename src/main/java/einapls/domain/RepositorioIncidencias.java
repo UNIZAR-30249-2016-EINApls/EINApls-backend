@@ -3,10 +3,7 @@ package einapls.domain;
 import einapls.domain.enumerations.*;
 import einapls.infrastructure.PoolConexiones;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 /**
@@ -14,9 +11,37 @@ import java.util.ArrayList;
  */
 public class RepositorioIncidencias {
 
-    //// TODO: 25/05/2016 TODO la implementacion, actualmente todo falseado
-    public static boolean createIncidencia(Incidencia incidencia) {
-        return false;
+    /**
+     * Devuelve el id de la incidencia
+     * @param incidencia
+     * @return
+     */
+    public static int createIncidencia(Incidencia incidencia) {
+        int res = -1;
+        Connection c = PoolConexiones.getConex();
+        Statement stmt = null;
+        try {
+            stmt = c.createStatement();
+            String sql = "INSERT INTO einapls.incidencia( tipoedificio, tipopiso, foto, estado, titulo, descripcion, lat, lon)" +
+                    " VALUES ('" +
+                    incidencia.getLocalizacion().getEdificio() + "', '"+
+                    incidencia.getLocalizacion().getPiso() + "', '"+
+                    incidencia.getFoto() + "', '"+ incidencia.getEstadoIncidencia() + "', '"+
+                    incidencia.getTitulo() + "', '"+incidencia.getDescripcion() + "', '"+
+                    incidencia.getLocalizacion().getLat() + "', '"+
+                    incidencia.getLocalizacion().getLon() + "')";
+            stmt.executeUpdate(sql);
+
+            PreparedStatement query = c.prepareStatement("SELECT MAX(id) FROM einapls.incidencia");
+
+            ResultSet rs = query.executeQuery();
+            if (rs.next()) {
+                res = rs.getInt("max");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return res;
     }
 
     //// TODO: 25/05/2016 TODO la implementacion, actualmente todo falseado
