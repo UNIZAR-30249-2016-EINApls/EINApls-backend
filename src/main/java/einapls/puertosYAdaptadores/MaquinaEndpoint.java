@@ -1,8 +1,6 @@
 package einapls.puertosYAdaptadores;
 
-import einapls.application.OperacionesEspacios;
 import einapls.application.OperacionesMaquina;
-import einapls.domain.Espacio;
 import einapls.domain.MaquinaExpendedora;
 import einapls.puertosYAdaptadores.serializers.SerializerToGeoJson;
 import org.glassfish.grizzly.Grizzly;
