@@ -58,6 +58,58 @@ public class EndpointTest {
         }
     }
 
+    @Test
+    public void testGetIncidencia() {
+        String responseMsg = target.path("incidencia/1").request().get(String.class);
+        JsonParser parser = new JsonParser();
+        try {
+            parser.parse(responseMsg);
+        }
+        catch (JsonSyntaxException e) {
+            Assert.fail();
+
+        }
+    }
+
+    @Test
+    public void testGetIncidencias() {
+        String responseMsg = target.path("incidencias/PISO_0/ADA_BYRON").request().get(String.class);
+        JsonParser parser = new JsonParser();
+        try {
+            parser.parse(responseMsg);
+        }
+        catch (JsonSyntaxException e) {
+            Assert.fail();
+
+        }
+    }
+
+    @Test
+    public void testGetMaquina() {
+        String responseMsg = target.path("maquina/1").request().get(String.class);
+        JsonParser parser = new JsonParser();
+        try {
+            parser.parse(responseMsg);
+        }
+        catch (JsonSyntaxException e) {
+            Assert.fail();
+
+        }
+    }
+
+    @Test
+    public void testGetMaquinas() {
+        String responseMsg = target.path("maquinas/PISO_0/ADA_BYRON").request().get(String.class);
+        JsonParser parser = new JsonParser();
+        try {
+            parser.parse(responseMsg);
+        }
+        catch (JsonSyntaxException e) {
+            Assert.fail();
+
+        }
+    }
+
     
 
 }
