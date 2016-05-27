@@ -11,6 +11,7 @@ import java.sql.SQLException;
  * Servicio que nos indicará si un determinado espacio, diferenciado por su id, esta disponible o no.
  */
 public class Disponibilidad {
+    //// TODO: 28/05/2016 NO LA USAMOS Y DEBERIAMOS BORRARLA, LO DEJO LO DE BORRARLA PARA EL FINAL, NO VAYA A SER QUEE 
     //// TODO: 25/05/2016 calcular la disponibilidad se podria hacer en el frontend, si lo hacemos en el back en seria on esto
     //// TODO: TODO si usamos esto al final habria que actualizar los geojsones de espacio para que la devolvieran
 

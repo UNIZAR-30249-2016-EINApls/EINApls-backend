@@ -30,11 +30,17 @@ public class EspacioSerializer {
         TipoPiso tipoPiso = localizacion.getPiso();
         TipoEdificio tipoEdificio = localizacion.getEdificio();
 
+        //Calculamos la disponibilidad
+        boolean disponibilidad = true;
+        if(ocupacion >= capacidad){
+            disponibilidad = false;
+        }
         /*Formateamos un nuevo punto con los datos obtenidos siguiendo el siguiente formato
             { "type": "Feature",
                 "geometry": {"type": "Point", "coordinates": ['lat', 'lon']},
                 "properties": {
                     "id": 'id',
+                    "disponibiliad": 'disponibiliad',
                     "ocupacion": 'ocupacion',
                     "capacidad": 'ocupacion',
                     ""tipoEspacio: "'tipoEspacio'",
@@ -47,6 +53,7 @@ public class EspacioSerializer {
                     "\"geometry\": { \"type\": \"Point\", \"coordinates\": [" + lat + ", " + lon + "]}, " +
                     "\"properties\": {" +
                         "\"id\": " + id + "," +
+                        "\"disponibilidad\": " + disponibilidad + "," +
                         "\"ocupacion\": " + ocupacion + "," +
                         "\"capacidad\": " + capacidad + "," +
                         "\"tipoEspacio\": \"" + tipoEspacio.toString() + "\", " +

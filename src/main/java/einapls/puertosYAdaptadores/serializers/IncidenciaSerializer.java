@@ -40,6 +40,7 @@ public class IncidenciaSerializer {
 
     public static String serializeFeatureIncidencia(Incidencia incidencia, boolean esUltimo){
         //Cargamos los datos de la incidencia
+        int id = incidencia.getId();
         String titulo = incidencia.getTitulo();
         EstadoIncidencia estadoIncidencia = incidencia.getEstadoIncidencia();
         String foto = incidencia.getFoto();
@@ -56,6 +57,7 @@ public class IncidenciaSerializer {
             { "type": "Feature",
                 "geometry": {"type": "Point", "coordinates": ['lat', 'lon']},
                 "properties": {
+                    "id": 'id'
                     "titulo": "'titulo'",
                     "estadoIncidencia": "'estadoIncidencia.toString()'",
                     "foto": "'foto'",
@@ -68,6 +70,7 @@ public class IncidenciaSerializer {
         String feaureIncidencia = "{ \"type\": \"Feature\", " +
                     "\"geometry\": { \"type\": \"Point\", \"coordinates\": [" + lat + ", " + lon + "]}, " +
                     "\"properties\": {" +
+                        "\"id\": \"" + id +"\"," +
                         "\"titulo\": \"" + titulo + "\"," +
                         "\"estadoIncidencia\": \"" + estadoIncidencia.toString() + "\"," +
                         "\"foto\": \"" + foto + "\"," +
