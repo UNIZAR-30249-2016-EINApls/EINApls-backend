@@ -21,19 +21,22 @@ public class RepositorioIncidencias {
         Connection c = PoolConexiones.getConex();
         Statement stmt = null;
         try {
+            //Insertamos la incidencia
             stmt = c.createStatement();
-            String sql = "INSERT INTO einapls.incidencia( tipoedificio, tipopiso, foto, estado, titulo, descripcion, lat, lon)" +
+            String sql = "INSERT INTO einapls.incidencia( titulo, estado, foto, descripcion, lat, lon, tipopiso, tipoedificio)" +
                     " VALUES ('" +
-                    incidencia.getLocalizacion().getEdificio() + "', '"+
-                    incidencia.getLocalizacion().getPiso() + "', '"+
-                    incidencia.getFoto() + "', '"+ incidencia.getEstadoIncidencia() + "', '"+
-                    incidencia.getTitulo() + "', '"+incidencia.getDescripcion() + "', '"+
-                    incidencia.getLocalizacion().getLat() + "', '"+
-                    incidencia.getLocalizacion().getLon() + "')";
+                                incidencia.getTitulo() + "', '" +
+                                incidencia.getEstadoIncidencia() + "', '"+
+                                incidencia.getFoto() + "', '"+
+                                incidencia.getDescripcion() + "', '"+
+                                incidencia.getLocalizacion().getLat() + "', '"+
+                                incidencia.getLocalizacion().getLon() + "', '"+
+                                incidencia.getLocalizacion().getPiso() + "', '"+
+                                incidencia.getLocalizacion().getEdificio() +
+                            "')";
             stmt.executeUpdate(sql);
-
+            //Scamos su id asignado por la BD para devolverlo posteriormente
             PreparedStatement query = c.prepareStatement("SELECT MAX(id) FROM einapls.incidencia");
-
             ResultSet rs = query.executeQuery();
             if (rs.next()) {
                 res = rs.getInt("max");
@@ -44,7 +47,6 @@ public class RepositorioIncidencias {
         return res;
     }
 
-    //// TODO: 25/05/2016 TODO la implementacion, actualmente todo falseado
     //FINDS
     //Devuelve un objeto incidencia con la incidencia guardada en la BD con el id id
     public static Incidencia findIncidencia(int id) {
@@ -87,7 +89,6 @@ public class RepositorioIncidencias {
     //Devuelve una incidencia con los datos extraidos de un resultset
     private static Incidencia getIncidenciaFromRS (ResultSet rs){
         Incidencia incidencia = null;
-
         try{
             //Cargamos los atributos de la incidencia
             int id = rs.getInt("id");
@@ -105,7 +106,6 @@ public class RepositorioIncidencias {
 
             //Creamos la incidencia
             incidencia= new Incidencia(id, titulo, estadoIncidenciaEnum, foto,  descripcion, localizacion);
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
