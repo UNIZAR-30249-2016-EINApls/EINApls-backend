@@ -7,10 +7,7 @@ import org.postgresql.PGConnection;
 import java.sql.*;
 import java.util.ArrayList;
 
-/**
- * Created by javmu on 26/05/2016.
- */
-/*public class PoblarBD {
+public class PoblarBD {
     static int id = 0;
     //3857
     public static void main(String[] args){
