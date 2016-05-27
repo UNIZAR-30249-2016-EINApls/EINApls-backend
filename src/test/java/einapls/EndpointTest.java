@@ -3,6 +3,10 @@ package einapls;
 import einapls.puertosYAdaptadores.Server;
 import org.junit.*;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
+
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
@@ -12,6 +16,8 @@ import static org.junit.Assert.assertEquals;
 public class EndpointTest {
 
     private static WebTarget target;
+    private static final Gson gson = new Gson();
+
 
     @BeforeClass
     public static void setUp() throws Exception {
@@ -28,16 +34,28 @@ public class EndpointTest {
 
     @Test
     public void testGetEspacio() {
-        String responseMsg = target.path("espacio/27").request().get(String.class);
-        String response = "{\"type\" : \"FeatureCollection\",\"features\":";
-        assertEquals(true, responseMsg.startsWith(response));
+        String responseMsg = target.path("espacio/26").request().get(String.class);
+        JsonParser parser = new JsonParser();
+        try {
+            parser.parse(responseMsg);
+        }
+        catch (JsonSyntaxException e) {
+            Assert.fail();
+
+        }
     }
 
     @Test
     public void testGetEspacios() {
         String responseMsg = target.path("espacios/PISO_0/ADA_BYRON").request().get(String.class);
-        String response = "{\"type\" : \"FeatureCollection\",\"features\":";
-        assertEquals(true, responseMsg.startsWith(response));
+        JsonParser parser = new JsonParser();
+        try {
+            parser.parse(responseMsg);
+        }
+        catch (JsonSyntaxException e) {
+            Assert.fail();
+
+        }
     }
 
     
