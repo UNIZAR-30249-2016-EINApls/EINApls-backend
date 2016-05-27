@@ -17,88 +17,61 @@ import java.util.HashMap;
  */
 public class RepositorioMaquinas {
 
+    //Devuelve un objeto maquina con la maquina guardada en la BD con el id id
     public static MaquinaExpendedora findMaquina(int id) {
         Connection con = PoolConexiones.getConex();
+        MaquinaExpendedora maquina = null;
         try {
             PreparedStatement query = con.prepareStatement("SELECT * FROM maq_exp WHERE id = ?");
             query.setInt(1, id);
-
             ResultSet rs = query.executeQuery();
-
-            float latitud = -1;
-            float longitud = -1;
-            int capacidad = -1;
-            String tipoPiso = "";
-            String tipoEdificio = "";
-            if (rs.next()) {
-                latitud = rs.getFloat("lat");
-                longitud = rs.getFloat("lon");
-                tipoPiso = rs.getString("tipopiso");
-                tipoEdificio = rs.getString("tipoedificio");
-
-                System.out.println("TIPO_PISOOOOOO " + tipoPiso );
-                TipoPiso tipoPisoEnum = ConversorEnum.getTipoPiso(tipoPiso);
-                TipoEdificio tipoEdificioEnum = ConversorEnum.getTipoEdificio(tipoEdificio);
-                Localizacion localizacion = new Localizacion(latitud, longitud, tipoPisoEnum, tipoEdificioEnum);
-
-                System.out.println("TIPO_PISO: " + tipoPisoEnum.toString() + " | TIPO_EDIFICIO: "
-                        + tipoEdificioEnum.toString() + " | COORDX: " + latitud);
-
-                return new MaquinaExpendedora(id, new HashMap<String, Integer>(), localizacion);
+            if(rs.next()){
+                maquina = getMaquinaFromRS(rs);
             }
-            else return null;
-
         } catch (SQLException e) {
             e.printStackTrace();
-            return null;
         }
+        return maquina;
     }
-
-    public static MaquinaExpendedora[] findMaquinas(TipoPiso tipoPis, TipoEdificio tipoEdif) {
-        ArrayList<MaquinaExpendedora> listMaquinas = new ArrayList<>();
+    //Devuelve un array con todas las maquinas que hay en la BD en el piso tipoPiso y edificio tipoEdificio
+    public static MaquinaExpendedora[] findMaquinas(TipoPiso tipoPiso, TipoEdificio tipoEdificio) {
         Connection con = PoolConexiones.getConex();
+        ArrayList<MaquinaExpendedora> listMaquinas = new ArrayList<>();
+        MaquinaExpendedora maquina = null;
         try {
             PreparedStatement query = con.prepareStatement("SELECT * FROM maq_exp WHERE tipopiso = ? AND tipoedificio = ?");
-            query.setString(1, tipoPis.toString());
-            query.setString(2, tipoEdif.toString());
-
+            query.setString(1, tipoPiso.toString());
+            query.setString(2, tipoEdificio.toString());
             ResultSet rs = query.executeQuery();
-
-            int id;
-            float latitud = -1;
-            float longitud = -1;
-            int capacidad = -1;
-            String tipoPiso = "";
-            String tipoEdificio = "";
             while (rs.next()) {
-                id = rs.getInt("id");
-                latitud = rs.getFloat("lat");
-                longitud = rs.getFloat("lon");
-                tipoPiso = rs.getString("tipopiso");
-                tipoEdificio = rs.getString("tipoedificio");
-
-                TipoPiso tipoPisoEnum = ConversorEnum.getTipoPiso(tipoPiso);
-                TipoEdificio tipoEdificioEnum = ConversorEnum.getTipoEdificio(tipoEdificio);
-                Localizacion localizacion = new Localizacion(latitud, longitud, tipoPisoEnum, tipoEdificioEnum);
-                listMaquinas.add(new MaquinaExpendedora(id, new HashMap<String, Integer>(), localizacion));
+                maquina = getMaquinaFromRS(rs);
+                listMaquinas.add(maquina);
             }
-            for (MaquinaExpendedora maquina : listMaquinas) {
-                System.out.println("TIPO_PISO: " + maquina.getLocalizacion().getPiso() + " | TIPO_EDIFICIO: " +
-                        maquina.getLocalizacion().getEdificio() + " | COORD: "  + maquina.getLocalizacion().getLat());
-            }
-            return listMaquinas.toArray(new MaquinaExpendedora[listMaquinas.size()]);
-
         } catch (SQLException e) {
             e.printStackTrace();
-            return null;
         }
+        return listMaquinas.toArray(new MaquinaExpendedora[listMaquinas.size()]);
     }
 
-    /**
-     * Copia de findMaquinas pero devuelve todas las maquinas
-     * @return
-     */
+    //Devuelve todas las maquinas que hay en la BD
     public static MaquinaExpendedora[] findAllMaquinas() {
+        Connection con = PoolConexiones.getConex();
+        ArrayList<MaquinaExpendedora> listMaquinas = new ArrayList<>();
+        MaquinaExpendedora maquina = null;
+        try {
+            PreparedStatement query = con.prepareStatement("SELECT * FROM maq_exp");
+            ResultSet rs = query.executeQuery();
+            while (rs.next()) {
+                maquina = getMaquinaFromRS(rs);
+                listMaquinas.add(maquina);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return listMaquinas.toArray(new MaquinaExpendedora[listMaquinas.size()]);
+
+        /*
+
         ArrayList<MaquinaExpendedora> listMaquinas = new ArrayList<>();
         Connection con = PoolConexiones.getConex();
         try {
@@ -124,17 +97,38 @@ public class RepositorioMaquinas {
                 Localizacion localizacion = new Localizacion(latitud, longitud, tipoPisoEnum, tipoEdificioEnum);
                 listMaquinas.add(new MaquinaExpendedora(id, new HashMap<String, Integer>(), localizacion));
             }
-            /*
-            for (MaquinaExpendedora maquina : listMaquinas) {
-                System.out.println("TIPO_PISO: " + maquina.getLocalizacion().getPiso() + " | TIPO_EDIFICIO: " +
-                        maquina.getLocalizacion().getEdificio() + " | COORD: "  + maquina.getLocalizacion().getLat());
-            }
-            */
+
             return listMaquinas.toArray(new MaquinaExpendedora[listMaquinas.size()]);
 
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
         }
+    */
+    }
+
+    //Devuelve una maquina con los datos extraidos de un resultset
+    private static MaquinaExpendedora getMaquinaFromRS (ResultSet rs){
+        MaquinaExpendedora maquina = null;
+        try {
+            //Cargamos los atributos de la mauina expendedora
+            int id = rs.getInt("id");
+            //// TODO: 27/05/2016  rellenar el stock bien
+            HashMap<String, Integer> stock = new HashMap<String, Integer>();
+
+            //Cargamos la localizacion
+            float latitud = rs.getFloat("lat");
+            float longitud = rs.getFloat("lon");
+            TipoPiso tipoPisoEnum = ConversorEnum.getTipoPiso(rs.getString("piso"));
+            TipoEdificio tipoEdificioEnum = ConversorEnum.getTipoEdificio(rs.getString("edificio"));
+            Localizacion localizacion = new Localizacion(latitud, longitud, tipoPisoEnum, tipoEdificioEnum);
+
+            //Creamos la maquina
+            maquina = new MaquinaExpendedora(id, stock , localizacion);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return maquina;
     }
 }

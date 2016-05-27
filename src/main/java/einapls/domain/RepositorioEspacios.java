@@ -8,6 +8,7 @@ import einapls.infrastructure.PoolConexiones;
 
 import java.sql.*;
 import java.util.ArrayList;
+//// TODO: 27/05/2016 probar cosas y eliminar comments de codigo
 
 /**
  * Clase que se comunicará con e respositorio donde se encuentran los espacios
@@ -34,36 +35,44 @@ public class RepositorioEspacios {
 
     //Buscara en la BD todos aquellos epsacios que esten en el piso
     public static Espacio[] findEspacios (TipoPiso tipoPiso, TipoEdificio tipoEdificio) {
-
         Connection con = PoolConexiones.getConex();
         ArrayList<Espacio> listEspacios = new ArrayList<>();
         Espacio espacio = null;
-
         try {
             PreparedStatement query = con.prepareStatement("SELECT * FROM espacio WHERE tipopiso = ? AND tipoedificio = ?");
             query.setString(1, tipoPiso.toString());
             query.setString(2, tipoEdificio.toString());
-
             ResultSet rs = query.executeQuery();
-
             while (rs.next()) {
                 espacio = getEspacioFromRS(rs);
                 listEspacios.add(espacio);
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return listEspacios.toArray(new Espacio[listEspacios.size()]);
     }
 
-    /**
-     * Copia de findEspacios pero devuelve todos los espacios
-     */
     //// TODO: 27/05/2016 necesitamos esto?
+    //Devuelve todos los espacios de la BD
     public static Espacio[] findAllEspacios () {
-        ArrayList<Espacio> listEspacios = new ArrayList<>();
         Connection con = PoolConexiones.getConex();
+        ArrayList<Espacio> listEspacios = new ArrayList<>();
+        Espacio espacio = null;
+        try {
+            PreparedStatement query = con.prepareStatement("SELECT * FROM espacio");
+            ResultSet rs = query.executeQuery();
+            while (rs.next()) {
+                espacio = getEspacioFromRS(rs);
+                listEspacios.add(espacio);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return listEspacios.toArray(new Espacio[listEspacios.size()]);
+
+        /*
+
         try {
             PreparedStatement query = con.prepareStatement("SELECT * FROM espacio");
 
@@ -99,6 +108,7 @@ public class RepositorioEspacios {
             e.printStackTrace();
             return null;
         }
+        */
     }
 
     //Devuelve un espacio con los datos extraidos de un resultset
