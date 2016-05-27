@@ -1,8 +1,6 @@
 package einapls.puertosYAdaptadores;
 
-import einapls.application.OperacionesIncidencias;
 import einapls.application.OperacionesMaquina;
-import einapls.domain.Incidencia;
 import einapls.domain.MaquinaExpendedora;
 import einapls.domain.enumerations.TipoEdificio;
 import einapls.domain.enumerations.TipoPiso;
@@ -30,7 +28,6 @@ public class MaquinasEndpoint {
     public String getIncidencias(@PathParam("tipoPiso") TipoPiso tipoPiso,
                               @PathParam("tipoEdificio") TipoEdificio tipoEdificio) {
         LOGGER.info("GET /maquinas");
-
         MaquinaExpendedora[] maquinas = OperacionesMaquina.getMaquinas(tipoPiso, tipoEdificio);
         //Le pasamos el array de Maquinas al serializar para obtener un GeoJSon
         SerializerToGeoJson serializer = new SerializerToGeoJson(maquinas);
