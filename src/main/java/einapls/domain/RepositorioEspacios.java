@@ -21,32 +21,32 @@ public class RepositorioEspacios {
             query.setInt(1, id);
 
             ResultSet rs = query.executeQuery();
-
+            
             float latitud = -1;
             float longitud = -1;
+            int ocupacion = -1;
             int capacidad = -1;
             String tipoEspacio = "";
             String tipoPiso = "";
             String tipoEdificio = "";
             if (rs.next()) {
+                //Cargamos los atributos del espacio
+                capacidad = rs.getInt("capacidad");
+                ocupacion = rs.getInt("ocupacion");
+                tipoEspacio = rs.getString("tipoespacio");
+                TipoEspacio tipoEspacioEnum = ConversorEnum.getTipoEspacio(tipoEspacio);
+
+                //Creamos la Localizacion
                 latitud = rs.getFloat("lat");
                 longitud = rs.getFloat("lon");
-                capacidad = rs.getInt("capacidad");
-                tipoEspacio = rs.getString("tipoespacio");
                 tipoPiso = rs.getString("tipopiso");
                 tipoEdificio = rs.getString("tipoedificio");
-
-                System.out.println("TIPO_PISOOOOOO " + tipoPiso );
-                TipoEspacio tipoEspacioEnum = ConversorEnum.getTipoEspacio(tipoEspacio);
                 TipoPiso tipoPisoEnum = ConversorEnum.getTipoPiso(tipoPiso);
                 TipoEdificio tipoEdificioEnum = ConversorEnum.getTipoEdificio(tipoEdificio);
+
                 Localizacion localizacion = new Localizacion(latitud, longitud, tipoPisoEnum, tipoEdificioEnum);
 
-                System.out.println("TIPO_PISO: " + tipoPisoEnum.toString() + " | TIPO_EDIFICIO: "
-                        + tipoEdificioEnum.toString() + " | TIPO_ESPACIO: "  + tipoEspacioEnum.toString());
-
-                //TODO: La ocupación la ofrece el servicio Disponibilidad
-                return new Espacio(id, capacidad, 0, tipoEspacioEnum, localizacion);
+                return new Espacio(id, capacidad, ocupacion, tipoEspacioEnum, localizacion);
             }
             else return null;
 
@@ -71,6 +71,7 @@ public class RepositorioEspacios {
             float latitud = -1;
             float longitud = -1;
             int capacidad = -1;
+            int ocupacion = -1;
             String tipoEspacio = "";
             String tipoPiso = "";
             String tipoEdificio = "";
@@ -79,6 +80,7 @@ public class RepositorioEspacios {
                 latitud = rs.getFloat("lat");
                 longitud = rs.getFloat("lon");
                 capacidad = rs.getInt("capacidad");
+                ocupacion = rs.getInt("ocupacion");
                 tipoEspacio = rs.getString("tipoespacio");
                 tipoPiso = rs.getString("tipoPiso");
                 tipoEdificio = rs.getString("tipoedificio");
@@ -87,12 +89,15 @@ public class RepositorioEspacios {
                 TipoPiso tipoPisoEnum = ConversorEnum.getTipoPiso(tipoPiso);
                 TipoEdificio tipoEdificioEnum = ConversorEnum.getTipoEdificio(tipoEdificio);
                 Localizacion localizacion = new Localizacion(latitud, longitud, tipoPisoEnum, tipoEdificioEnum);
-                listEspacios.add(new Espacio(id, capacidad, 0, tipoEspacioEnum, localizacion));
+                listEspacios.add(new Espacio(id, capacidad, ocupacion, tipoEspacioEnum, localizacion));
             }
+
+            /*
             for (Espacio espacio : listEspacios) {
                 System.out.println("TIPO_PISO: " + espacio.getLocalizacion().getPiso() + " | TIPO_EDIFICIO: " +
                         espacio.getLocalizacion().getEdificio() + " | TIPO_ESPACIO: "  + espacio.getTipo());
             }
+            */
 
             return listEspacios.toArray(new Espacio[listEspacios.size()]);
 
@@ -137,10 +142,10 @@ public class RepositorioEspacios {
                 Localizacion localizacion = new Localizacion(latitud, longitud, tipoPisoEnum, tipoEdificioEnum);
                 listEspacios.add(new Espacio(id, capacidad, 0, tipoEspacioEnum, localizacion));
             }
-            for (Espacio espacio : listEspacios) {
+            /*for (Espacio espacio : listEspacios) {
                 System.out.println("TIPO_PISO: " + espacio.getLocalizacion().getPiso() + " | TIPO_EDIFICIO: " +
                         espacio.getLocalizacion().getEdificio() + " | TIPO_ESPACIO: "  + espacio.getTipo());
-            }
+            }*/
 
             return listEspacios.toArray(new Espacio[listEspacios.size()]);
 
