@@ -63,8 +63,6 @@ public class ConversorEnum {
             tipoIncidencia = EstadoIncidencia.ACEPTADA;
         }else if(estadoIncidenciaString.equals("CERRADA")){
             tipoIncidencia = EstadoIncidencia.CERRADA;
-        }else if(estadoIncidenciaString.equals("ACEPTADA")) {
-            tipoIncidencia = EstadoIncidencia.ACEPTADA;
         }
         return tipoIncidencia;
     }
