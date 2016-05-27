@@ -70,41 +70,6 @@ public class RepositorioMaquinas {
         }
         return listMaquinas.toArray(new MaquinaExpendedora[listMaquinas.size()]);
 
-        /*
-
-        ArrayList<MaquinaExpendedora> listMaquinas = new ArrayList<>();
-        Connection con = PoolConexiones.getConex();
-        try {
-            PreparedStatement query = con.prepareStatement("SELECT * FROM maq_exp");
-
-            ResultSet rs = query.executeQuery();
-
-            int id;
-            float latitud = -1;
-            float longitud = -1;
-            int capacidad = -1;
-            String tipoPiso = "";
-            String tipoEdificio = "";
-            while (rs.next()) {
-                id = rs.getInt("id");
-                latitud = rs.getFloat("lat");
-                longitud = rs.getFloat("lon");
-                tipoPiso = rs.getString("tipopiso");
-                tipoEdificio = rs.getString("tipoedificio");
-
-                TipoPiso tipoPisoEnum = ConversorEnum.getTipoPiso(tipoPiso);
-                TipoEdificio tipoEdificioEnum = ConversorEnum.getTipoEdificio(tipoEdificio);
-                Localizacion localizacion = new Localizacion(latitud, longitud, tipoPisoEnum, tipoEdificioEnum);
-                listMaquinas.add(new MaquinaExpendedora(id, new HashMap<String, Integer>(), localizacion));
-            }
-
-            return listMaquinas.toArray(new MaquinaExpendedora[listMaquinas.size()]);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return null;
-        }
-    */
     }
 
     //Devuelve una maquina con los datos extraidos de un resultset
