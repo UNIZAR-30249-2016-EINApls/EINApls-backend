@@ -1,6 +1,10 @@
 package einapls;
 
+import einapls.application.SimuladorES;
+import einapls.application.SimuladorStock;
+import einapls.domain.Espacio;
 import einapls.domain.MaquinaExpendedora;
+import einapls.domain.RepositorioEspacios;
 import einapls.domain.RepositorioMaquinas;
 import einapls.puertosYAdaptadores.Server;
 import org.glassfish.grizzly.Grizzly;
@@ -19,12 +23,13 @@ public class Main {
         LOGGER.setLevel(Level.FINER);
         try (Scanner scan = new Scanner(System.in)){
             Server.startServer();
+
             //Start Espacios
-            /*Espacio[] esps = RepositorioEspacios.findAllEspacios();
+            Espacio[] esps = RepositorioEspacios.findAllEspacios();
             //TODO solo coge 5 espacios
-            for(int i=0; i<5; i++){
+            for(int i=0; i<esps.length; i++){
                 (new Thread(new SimuladorES(esps[i]))).start();
-            }*/
+            }
 
             //Start Maquinas
             mes = RepositorioMaquinas.findAllMaquinas(); //solo coje ada
@@ -33,7 +38,7 @@ public class Main {
             hm.put("Chocolate",4);
             for(int i=0; i<mes.length; i++){
                 mes[i].setStock(hm);
-                //(new Thread(new SimuladorStock(mes[i]))).start();
+                (new Thread(new SimuladorStock(mes[i]))).start();
             }
 
             LOGGER.info("Press 's'+'enter' to shutdown now the server...");

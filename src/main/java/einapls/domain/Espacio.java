@@ -61,8 +61,6 @@ public class Espacio {
             stmt = con.createStatement();
             String sql = "UPDATE einapls.espacio SET ocupacion=" + ocupacion + " WHERE id=" + id + ";";
             stmt.executeUpdate(sql);
-            stmt.close();
-            con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }

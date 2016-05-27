@@ -10,7 +10,7 @@ public class PoolConexiones {
 
     //Establece conexion a la bd postgreSQL
     public static Connection getConex () {
-        System.out.print(".");
+        //System.out.print(".");
         if(connection==null){
             try {
                 Class.forName("org.postgresql.Driver");
