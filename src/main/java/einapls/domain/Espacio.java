@@ -35,6 +35,8 @@ public class Espacio {
         return ocupacion;
     }
 
+    public int getCapacidad() { return capacidad; }
+
     public TipoEspacio getTipo() {
         return TIPO;
     }

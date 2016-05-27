@@ -20,6 +20,7 @@ public class EspacioSerializer {
         //Cargamos los datos del espacio
         int id = espacio.getId();
         int ocupacion = espacio.getOcupacion();
+        int capacidad = espacio.getCapacidad();
         TipoEspacio tipoEspacio = espacio.getTipo();
 
         //Cargamos la localizacion del espacio
@@ -35,6 +36,7 @@ public class EspacioSerializer {
                 "properties": {
                     "id": 'id',
                     "ocupacion": 'ocupacion',
+                    "capacidad": 'ocupacion',
                     ""tipoEspacio: "'tipoEspacio'",
                     "tipoPiso": "'tipoEspacio'",
                     "tipoEdificio": "'tipoEspacio'"
@@ -46,6 +48,7 @@ public class EspacioSerializer {
                     "\"properties\": {" +
                         "\"id\": " + id + "," +
                         "\"ocupacion\": " + ocupacion + "," +
+                        "\"capacidad\": " + capacidad + "," +
                         "\"tipoEspacio\": \"" + tipoEspacio.toString() + "\", " +
                         "\"tipoPiso\": \"" + tipoPiso.toString() + "\", " +
                         "\"tipoEdificio\": \"" + tipoEdificio.toString() + "\" " +

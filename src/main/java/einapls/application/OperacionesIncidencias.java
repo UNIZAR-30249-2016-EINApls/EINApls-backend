@@ -20,18 +20,17 @@ public class OperacionesIncidencias {
         Connection c = PoolConexiones.getConex();
         Statement stmt = c.createStatement();
         String sql = "INSERT INTO einapls.incidencia(\n" +
-                "            edificio, piso, foto, estado, titulo, descripcion, lat, lon)\n" +
+                "                           edificio, piso, foto, estado, titulo, descripcion, lat, lon)\n" +
                 "    VALUES ('" + incidencia.getLocalizacion().getEdificio() + "', '"+
-                incidencia.getLocalizacion().getPiso() + "', '"+
-                incidencia.getFoto() + "', '"+ incidencia.getEstadoIncidencia() + "', '"+
-                incidencia.getTitulo() + "', '"+incidencia.getDescripcion() + "', '"+
-                incidencia.getLocalizacion().getLat() + "', '"+
-                incidencia.getLocalizacion().getLon() + "', '"+
-                ");";
+                                    incidencia.getLocalizacion().getPiso() + "', '"+
+                                    incidencia.getFoto() + "', '"+ incidencia.getEstadoIncidencia() + "', '"+
+                                    incidencia.getTitulo() + "', '"+incidencia.getDescripcion() + "', '"+
+                                    incidencia.getLocalizacion().getLat() + "', '"+
+                                    incidencia.getLocalizacion().getLon() + "', '"+
+                                    ");";
         stmt.executeUpdate(sql);
     }
 
-    //TODO comprobar las dos ops de find
     public static Incidencia getIncidencia(int id){
         //Llamamos a repositorio incidencias para que nos devuelva la incidencia con id id
         Incidencia incidencia = RepositorioIncidencias.findIncidencia(id);

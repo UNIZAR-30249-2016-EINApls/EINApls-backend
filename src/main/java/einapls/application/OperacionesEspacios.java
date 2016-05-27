@@ -4,7 +4,6 @@ import einapls.domain.Espacio;
 import einapls.domain.RepositorioEspacios;
 import einapls.domain.enumerations.TipoEdificio;
 import einapls.domain.enumerations.TipoPiso;
-import einapls.puertosYAdaptadores.serializers.SerializerToGeoJson;
 
 /**
  * Operaciones relacionadas con los Espacios
