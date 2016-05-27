@@ -31,7 +31,7 @@ public class EndpointTest {
         Server.stopServer();
 
     }
-/*
+
     @Test
     public void testGetEspacio() {
         String responseMsg = target.path("espacio/26").request().get(String.class);
@@ -83,7 +83,7 @@ public class EndpointTest {
 
         }
     }
-*/
+
     @Test
     public void testGetMaquina() {
         String responseMsg = target.path("maquina/1").request().get(String.class);
