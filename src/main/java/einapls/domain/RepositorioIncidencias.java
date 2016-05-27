@@ -105,7 +105,7 @@ public class RepositorioIncidencias {
             Localizacion localizacion = new Localizacion(latitud, longitud, tipoPisoEnum, tipoEdificioEnum);
 
             //Creamos la incidencia
-            incidencia= new Incidencia(id, titulo, EstadoIncidencia.ABIERTA, foto,  descripcion, localizacion);
+            incidencia= new Incidencia(id, titulo, estadoIncidenciaEnum, foto,  descripcion, localizacion);
 
         } catch (SQLException e) {
             e.printStackTrace();
