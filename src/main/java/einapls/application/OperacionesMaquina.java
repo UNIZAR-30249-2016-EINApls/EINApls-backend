@@ -14,10 +14,10 @@ import java.util.HashMap;
  */
 public class OperacionesMaquina {
 
+    //Devuelve una maquina de la base de datos identificada por un id
     public static MaquinaExpendedora getMaquina(int id){
         //Llamamos a repositorio maquinas  para que nos devuelva la maquina con id id
         MaquinaExpendedora maquinaExpendedora = RepositorioMaquinas.findMaquina(id);
-
         //Obtiene stock
         MaquinaExpendedora[] maquinas_con_stock = Main.dameStockMaquinas();
         for(int i = 0; i<maquinas_con_stock.length; i++){
@@ -25,10 +25,10 @@ public class OperacionesMaquina {
                 maquinaExpendedora.setStock(maquinas_con_stock[i].getAllStock());
             }
         }
-        System.out.println("----------------------------------");
         return maquinaExpendedora;
-
     }
+
+    //Devuelve un array de todas las maquinas en la BD con tipoPiso y tipoEdificio
     public static MaquinaExpendedora[] getMaquinas(TipoPiso tipoPiso, TipoEdificio tipoEdificio){
         //Llamamos a repositorio maquinas para que nos devuelva una lista con las maquinas en tipoEdificio y tipoPiso
         MaquinaExpendedora[] maquinas = RepositorioMaquinas.findMaquinas(tipoPiso,tipoEdificio);
@@ -48,6 +48,5 @@ public class OperacionesMaquina {
         SerializerToGeoJson serializer = new SerializerToGeoJson(maquinas);
         String geoJsonEspacios = serializer.DoSerializeToGeoJson();
         return maquinas;
-
     }
 }

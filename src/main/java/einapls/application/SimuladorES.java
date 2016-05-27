@@ -8,15 +8,14 @@ import einapls.domain.Espacio;
 public class SimuladorES implements Runnable{
 
     Espacio espacio;
+
     public SimuladorES(Espacio espacio){
         this.espacio = espacio;
     }
+
+    //Cada 10 s, Incrementara la ocupacion en 2 y 10 s despues la decrementa en 1
     @Override
     public void run() {
-        /*for(int i=0; i<10; i++){
-            espacio.incrementarOcupacion();
-        }*/
-
         while(true){
             try {
                 Thread.sleep(10000);
@@ -24,11 +23,9 @@ public class SimuladorES implements Runnable{
                 espacio.incrementarOcupacion();
                 Thread.sleep(10000);
                 espacio.decrementarOcupacion();
-
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-
     }
 }
