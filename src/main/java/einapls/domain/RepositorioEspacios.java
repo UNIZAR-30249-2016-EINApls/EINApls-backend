@@ -102,4 +102,52 @@ public class RepositorioEspacios {
         }
 
     }
+
+    /**
+     * Copia de findEspacios pero devuelve todos los espacios
+     */
+    public static Espacio[] findAllEspacios () {
+        ArrayList<Espacio> listEspacios = new ArrayList<>();
+        Connection con = PoolConexiones.getConex();
+        try {
+            PreparedStatement query = con.prepareStatement("SELECT * FROM espacio");
+
+            ResultSet rs = query.executeQuery();
+
+            int i = 0;
+            int id;
+            float latitud = -1;
+            float longitud = -1;
+            int capacidad = -1;
+            String tipoEspacio = "";
+            String tipoPiso = "";
+            String tipoEdificio = "";
+            while (rs.next()) {
+                id = rs.getInt("id");
+                latitud = rs.getFloat("lat");
+                longitud = rs.getFloat("lon");
+                capacidad = rs.getInt("capacidad");
+                tipoEspacio = rs.getString("tipoespacio");
+                tipoPiso = rs.getString("tipoPiso");
+                tipoEdificio = rs.getString("tipoedificio");
+
+                TipoEspacio tipoEspacioEnum = ConversorEnum.getTipoEspacio(tipoEspacio);
+                TipoPiso tipoPisoEnum = ConversorEnum.getTipoPiso(tipoPiso);
+                TipoEdificio tipoEdificioEnum = ConversorEnum.getTipoEdificio(tipoEdificio);
+                Localizacion localizacion = new Localizacion(latitud, longitud, tipoPisoEnum, tipoEdificioEnum);
+                listEspacios.add(new Espacio(id, capacidad, 0, tipoEspacioEnum, localizacion));
+            }
+            for (Espacio espacio : listEspacios) {
+                System.out.println("TIPO_PISO: " + espacio.getLocalizacion().getPiso() + " | TIPO_EDIFICIO: " +
+                        espacio.getLocalizacion().getEdificio() + " | TIPO_ESPACIO: "  + espacio.getTipo());
+            }
+
+            return listEspacios.toArray(new Espacio[listEspacios.size()]);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+    }
 }

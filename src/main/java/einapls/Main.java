@@ -6,8 +6,6 @@ import einapls.domain.Espacio;
 import einapls.domain.MaquinaExpendedora;
 import einapls.domain.RepositorioEspacios;
 import einapls.domain.RepositorioMaquinas;
-import einapls.domain.enumerations.TipoEdificio;
-import einapls.domain.enumerations.TipoPiso;
 import einapls.puertosYAdaptadores.Server;
 import org.glassfish.grizzly.Grizzly;
 
@@ -26,18 +24,11 @@ public class Main {
         try (Scanner scan = new Scanner(System.in)){
             Server.startServer();
             //Start Espacios
-            Espacio[] esps1 = RepositorioEspacios.findEspacios(TipoPiso.PISO_0, TipoEdificio.ADA_BYRON);
+            Espacio[] esps = RepositorioEspacios.findAllEspacios();
+            //TODO solo coge 5 espacios
             for(int i=0; i<5; i++){
-                (new Thread(new SimuladorES(esps1[i]))).start();
+                (new Thread(new SimuladorES(esps[i]))).start();
             }
-            /*Espacio[] esps2 = RepositorioEspacios.findEspacios(TipoPiso.PISO_1, TipoEdificio.ADA_BYRON);
-            for(int i=0; i<esps2.length; i++){
-                (new Thread(new SimuladorES(esps2[i]))).start();
-            }
-            Espacio[] esps3 = RepositorioEspacios.findEspacios(TipoPiso.PISO_2, TipoEdificio.ADA_BYRON);
-            for(int i=0; i<esps3.length; i++){
-                (new Thread(new SimuladorES(esps3[i]))).start();
-            }*/
 
             //Start Maquinas
             MaquinaExpendedora[] mes = RepositorioMaquinas.findAllMaquinas(); //solo coje ada
