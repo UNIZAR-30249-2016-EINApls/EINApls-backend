@@ -55,7 +55,7 @@ public class RepositorioIncidencias {
                         + tipoEdificioEnum.toString() + " | TIPO_INCIDENCIA: "  + estadoIncidenciaEnum.toString() +
                 " | TITULO: " + titulo);
 
-                return new Incidencia(id, titulo, foto,  descripcion, localizacion);
+                return new Incidencia(id, titulo, EstadoIncidencia.ABIERTA, foto,  descripcion, localizacion);
             }
             else return null;
 
@@ -101,7 +101,7 @@ public class RepositorioIncidencias {
                 TipoEdificio tipoEdificioEnum = ConversorEnum.getTipoEdificio(tipoEdificio);
                 EstadoIncidencia estadoIncidenciaEnum = ConversorEnum.getEstadoIncidencia(estadoIncidencia);
                 Localizacion localizacion = new Localizacion(latitud, longitud, tipoPisoEnum, tipoEdificioEnum);
-                listIncidencias.add(new Incidencia(id, titulo, foto,  descripcion, localizacion));
+                listIncidencias.add(new Incidencia(id, titulo,EstadoIncidencia.ABIERTA, foto,  descripcion, localizacion));
 
             }
             for (Incidencia incidencia : listIncidencias) {
