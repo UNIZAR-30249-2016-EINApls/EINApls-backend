@@ -119,8 +119,8 @@ public class RepositorioMaquinas {
             //Cargamos la localizacion
             float latitud = rs.getFloat("lat");
             float longitud = rs.getFloat("lon");
-            TipoPiso tipoPisoEnum = ConversorEnum.getTipoPiso(rs.getString("piso"));
-            TipoEdificio tipoEdificioEnum = ConversorEnum.getTipoEdificio(rs.getString("edificio"));
+            TipoPiso tipoPisoEnum = ConversorEnum.getTipoPiso(rs.getString("tipopiso"));
+            TipoEdificio tipoEdificioEnum = ConversorEnum.getTipoEdificio(rs.getString("tipoedificio"));
             Localizacion localizacion = new Localizacion(latitud, longitud, tipoPisoEnum, tipoEdificioEnum);
 
             //Creamos la maquina

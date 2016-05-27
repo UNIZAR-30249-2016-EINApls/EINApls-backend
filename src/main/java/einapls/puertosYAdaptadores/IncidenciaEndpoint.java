@@ -26,7 +26,6 @@ public class IncidenciaEndpoint {
     @Path("/{id}")
     public String getIncidencia(@PathParam("id") String id) {
         LOGGER.info("GET /incidencia");
-
         //Le pasamos el id de la incidencia al serializar para obtener un GeoJSon
         Incidencia[] incidencias = new Incidencia[1];
         incidencias[0] = OperacionesIncidencias.getIncidencia(Integer.parseInt(id));
