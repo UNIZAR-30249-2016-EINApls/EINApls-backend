@@ -1,7 +1,7 @@
 package einapls.domain.enumerations;
 
 /**
- * Created by Jorge on 26/05/2016.
+ * Clase encargada de convertir de String al correspondiente tipo asociado
  */
 public class ConversorEnum {
 
@@ -20,7 +20,6 @@ public class ConversorEnum {
         else if (tipoEspacioString.equals("SALA_DE_ESTUDIO")) {
             tipoEspacio  = TipoEspacio.SALA_DE_ESTUDIO;
         }
-
         return tipoEspacio;
     }
 
@@ -54,13 +53,15 @@ public class ConversorEnum {
         else if (tipoEdificioString.equals("BETANCOURT")) {
             tipoEdificio = TipoEdificio.BETANCOURT;
         }
-
         return tipoEdificio;
     }
 
+    //CONVERSIÓN ESTADO INCIDENCIA
     public static EstadoIncidencia getEstadoIncidencia (String estadoIncidenciaString) {
         EstadoIncidencia tipoIncidencia =  EstadoIncidencia.ABIERTA;
-        if (estadoIncidenciaString.equals("CERRADA")) {
+        if (estadoIncidenciaString.equals("ACEPTADA")) {
+            tipoIncidencia = EstadoIncidencia.ACEPTADA;
+        }else if(estadoIncidenciaString.equals("CERRADA")){
             tipoIncidencia = EstadoIncidencia.CERRADA;
         }
         return tipoIncidencia;
