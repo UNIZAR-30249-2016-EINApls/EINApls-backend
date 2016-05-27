@@ -124,10 +124,12 @@ public class RepositorioMaquinas {
                 Localizacion localizacion = new Localizacion(latitud, longitud, tipoPisoEnum, tipoEdificioEnum);
                 listMaquinas.add(new MaquinaExpendedora(id, new HashMap<String, Integer>(), localizacion));
             }
+            /*
             for (MaquinaExpendedora maquina : listMaquinas) {
                 System.out.println("TIPO_PISO: " + maquina.getLocalizacion().getPiso() + " | TIPO_EDIFICIO: " +
                         maquina.getLocalizacion().getEdificio() + " | COORD: "  + maquina.getLocalizacion().getLat());
             }
+            */
             return listMaquinas.toArray(new MaquinaExpendedora[listMaquinas.size()]);
 
         } catch (SQLException e) {
