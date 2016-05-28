@@ -1,11 +1,13 @@
 package einapls.puertosYAdaptadores.serializers;
 
-import einapls.domain.Disponibilidad;
+import einapls.domain.ServicioDisponibilidad;
 import einapls.domain.Espacio;
 import einapls.domain.Localizacion;
 import einapls.domain.enumerations.TipoEdificio;
 import einapls.domain.enumerations.TipoEspacio;
 import einapls.domain.enumerations.TipoPiso;
+
+import static einapls.domain.ServicioDisponibilidad.isDisponible;
 
 /**
  * Serializador de un Espacio, dado un Array de Espacios devolverá un GeoJson con la información de todos ellos
@@ -32,7 +34,9 @@ public class EspacioSerializer {
         if(ocupacion >= capacidad){
             disponibilidad = false;
         }*/
-        boolean disponibilidad= new Disponibilidad(espacio).isDisponible();
+        boolean disponibilidad = ServicioDisponibilidad.isDisponible(espacio);
+
+
         /*Formateamos un nuevo punto con los datos obtenidos siguiendo el siguiente formato
             { "type": "Feature",
                 "geometry": {"type": "Point", "coordinates": ['lat', 'lon']},

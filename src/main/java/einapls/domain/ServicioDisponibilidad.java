@@ -10,15 +10,9 @@ import java.sql.SQLException;
 
 // Servicio que nos indicará si un determinado espacio, diferenciado por su id, esta disponible o no.
 
-public class Disponibilidad {
+public class ServicioDisponibilidad {
 
-    private Espacio espacio;
-
-    public Disponibilidad(Espacio espacio){
-        this.espacio = espacio;
-    }
-
-    public boolean isDisponible () {
+    public static boolean isDisponible (Espacio espacio) {
         boolean disponible = true;
         if(espacio.getOcupacion() >= espacio.getCapacidad()){
             disponible = false;
