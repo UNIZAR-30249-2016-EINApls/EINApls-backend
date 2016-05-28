@@ -1,5 +1,6 @@
 package einapls.puertosYAdaptadores.serializers;
 
+import einapls.domain.Disponibilidad;
 import einapls.domain.Espacio;
 import einapls.domain.Localizacion;
 import einapls.domain.enumerations.TipoEdificio;
@@ -25,11 +26,13 @@ public class EspacioSerializer {
         TipoPiso tipoPiso = localizacion.getPiso();
         TipoEdificio tipoEdificio = localizacion.getEdificio();
 
+        //// TODO: 28/05/2016  lo comentado de abajo es si no usamos el servicio disponbilidad, elimianr si eso
         //Calculamos la disponibilidad
-        boolean disponibilidad = true;
+        /*boolean disponibilidad = true;
         if(ocupacion >= capacidad){
             disponibilidad = false;
-        }
+        }*/
+        boolean disponibilidad= new Disponibilidad(espacio).isDisponible();
         /*Formateamos un nuevo punto con los datos obtenidos siguiendo el siguiente formato
             { "type": "Feature",
                 "geometry": {"type": "Point", "coordinates": ['lat', 'lon']},
