@@ -1,17 +1,17 @@
 package einapls;
 
-import einapls.puertosYAdaptadores.Server;
-import org.junit.*;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
+import einapls.puertosYAdaptadores.Server;
+import org.junit.AfterClass;
+import org.junit.Assert;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
-
-import static org.junit.Assert.assertEquals;
 
 public class EndpointTest {
 
@@ -35,6 +35,19 @@ public class EndpointTest {
     @Test
     public void testGetEspacio() {
         String responseMsg = target.path("espacio/26").request().get(String.class);
+        JsonParser parser = new JsonParser();
+        try {
+            parser.parse(responseMsg);
+        }
+        catch (JsonSyntaxException e) {
+            Assert.fail();
+
+        }
+    }
+
+    @Test
+    public void testGetEspacioNotExist() {
+        String responseMsg = target.path("espacio/1").request().get(String.class);
         JsonParser parser = new JsonParser();
         try {
             parser.parse(responseMsg);
@@ -86,7 +99,7 @@ public class EndpointTest {
 
     @Test
     public void testGetMaquina() {
-        String responseMsg = target.path("maquina/1").request().get(String.class);
+        String responseMsg = target.path("maquina/2").request().get(String.class);
         JsonParser parser = new JsonParser();
         try {
             parser.parse(responseMsg);
@@ -106,7 +119,6 @@ public class EndpointTest {
         }
         catch (JsonSyntaxException e) {
             Assert.fail();
-
         }
     }
 
