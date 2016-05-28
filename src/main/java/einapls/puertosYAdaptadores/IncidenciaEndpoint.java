@@ -36,7 +36,7 @@ public class IncidenciaEndpoint {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public String postIncidencia(@FormParam("geojson") String geojson){
+    public String postIncidencia(String geojson){
         LOGGER.info("POST /incidencia");
         Incidencia i = IncidenciaDeserializer.deserializeGeoJsonIncidencia(geojson);
         Incidencia i2 = OperacionesIncidencias.postIncidencias(i);

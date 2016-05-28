@@ -1,30 +1,11 @@
-package einapls.puertosYAdaptadores;
+package einapls.application;
 
-import einapls.application.OperacionesMaquina;
-import einapls.domain.MaquinaExpendedora;
-import einapls.puertosYAdaptadores.serializers.SerializerToGeoJson;
-import org.glassfish.grizzly.Grizzly;
+/**
+ * Created by javmu on 28/05/2016.
+ */
+public class SimuladorHorario {
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-
-@Path("horarios")
-public class SimuladorServicioHorarios {
-
-    private static final Logger LOGGER = Grizzly.logger(Server.class);
-
-    static { LOGGER.setLevel(Level.FINER);}
-
-    @GET
-    @Produces(MediaType.TEXT_PLAIN)
-    public String getMaquina() {
-        LOGGER.info("GET /horarios");
+    public static String getHorario() {
         String horariosJSON = "{ \"8:00\": \"Fisica\"," +
                 "\"9:00\": \"Programacion\"," +
                 "\"10:00\": \"Laboratorio de Software\"," +
@@ -39,10 +20,6 @@ public class SimuladorServicioHorarios {
                 "\"19:00\": \"LIBRE\"," +
                 "\"20:00\": \"Sistemas Distribuidos\"," +
                 "\"21:00\": \"LIBRE\"}";
-
-
-
-
         return horariosJSON;
     }
 }

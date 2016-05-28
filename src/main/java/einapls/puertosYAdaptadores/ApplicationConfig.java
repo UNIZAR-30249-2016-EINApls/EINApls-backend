@@ -12,7 +12,7 @@ public class ApplicationConfig extends ResourceConfig {
         register(IncidenciasEndpoint.class);
         register(MaquinaEndpoint.class);
         register(MaquinasEndpoint.class);
-        register(SimuladorServicioHorarios.class);
+        register(HorarioEndpoint.class);
     }
 
     //para cada de clase de java que teng aun end point hay que declararla en este constructor
