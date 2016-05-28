@@ -46,7 +46,7 @@ public class OperacionesMaquina {
         }
         //Le pasamos el array de Maquinas al serializar para obtener un GeoJSon
         SerializerToGeoJson serializer = new SerializerToGeoJson(maquinas);
-        String geoJsonEspacios = serializer.DoSerializeToGeoJson();
+        String geoJsonEspacios = serializer.doSerializeToGeoJson();
         return maquinas;
     }
 }
