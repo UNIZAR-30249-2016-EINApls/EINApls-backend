@@ -34,7 +34,7 @@ public class EndpointTest {
 
     @Test
     public void testGetEspacio() {
-        String responseMsg = target.path("espacio/26").request().get(String.class);
+        String responseMsg = target.path("places/26").request().get(String.class);
         JsonParser parser = new JsonParser();
         try {
             parser.parse(responseMsg);
@@ -47,7 +47,7 @@ public class EndpointTest {
 
     @Test
     public void testGetEspacioNotExist() {
-        String responseMsg = target.path("espacio/1").request().get(String.class);
+        String responseMsg = target.path("places/1").request().get(String.class);
         JsonParser parser = new JsonParser();
         try {
             parser.parse(responseMsg);
@@ -60,7 +60,7 @@ public class EndpointTest {
 
     @Test
     public void testGetEspacios() {
-        String responseMsg = target.path("espacios/PISO_0/ADA_BYRON").request().get(String.class);
+        String responseMsg = target.path("ADA_BYRON/PISO_0/places").request().get(String.class);
         JsonParser parser = new JsonParser();
         try {
             parser.parse(responseMsg);
@@ -73,7 +73,7 @@ public class EndpointTest {
 
     @Test
     public void testGetIncidencia() {
-        String responseMsg = target.path("incidencia/1").request().get(String.class);
+        String responseMsg = target.path("issues/1").request().get(String.class);
         JsonParser parser = new JsonParser();
         try {
             parser.parse(responseMsg);
@@ -86,7 +86,7 @@ public class EndpointTest {
 
     @Test
     public void testGetIncidencias() {
-        String responseMsg = target.path("incidencias/PISO_0/ADA_BYRON").request().get(String.class);
+        String responseMsg = target.path("ADA_BYRON/PISO_0/issues").request().get(String.class);
         JsonParser parser = new JsonParser();
         try {
             parser.parse(responseMsg);
@@ -99,7 +99,7 @@ public class EndpointTest {
 
     @Test
     public void testGetMaquina() {
-        String responseMsg = target.path("maquina/2").request().get(String.class);
+        String responseMsg = target.path("machines/2").request().get(String.class);
         JsonParser parser = new JsonParser();
         try {
             parser.parse(responseMsg);
@@ -112,7 +112,7 @@ public class EndpointTest {
 
     @Test
     public void testGetMaquinas() {
-        String responseMsg = target.path("maquinas/PISO_0/ADA_BYRON").request().get(String.class);
+        String responseMsg = target.path("ADA_BYRON/PISO_0/machines").request().get(String.class);
         JsonParser parser = new JsonParser();
         try {
             parser.parse(responseMsg);
