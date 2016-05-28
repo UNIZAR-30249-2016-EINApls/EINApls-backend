@@ -16,10 +16,10 @@ import javax.ws.rs.core.MediaType;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-@Path("espacios/{tipoPiso}/{tipoEdificio}")
+@Path("{tipoEdificio}/{tipoPiso}/places")
 public class EspaciosEndpoint {
 
-    private static final Logger LOGGER = Grizzly.logger(Server.class);
+    private static final Logger LOGGER = Grizzly.logger(EspaciosEndpoint.class);
 
     static { LOGGER.setLevel(Level.FINER);}
 

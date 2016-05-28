@@ -1,8 +1,6 @@
 package einapls.puertosYAdaptadores;
 
-import einapls.application.OperacionesIncidencias;
 import einapls.application.OperacionesMaquina;
-import einapls.domain.Incidencia;
 import einapls.domain.MaquinaExpendedora;
 import einapls.domain.enumerations.TipoEdificio;
 import einapls.domain.enumerations.TipoPiso;
@@ -18,15 +16,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-@Path("maquinas/{tipoPiso}/{tipoEdificio}")
+@Path("{tipoEdificio}/{tipoPiso}/machines")
 public class MaquinasEndpoint {
 
-    private static final Logger LOGGER = Grizzly.logger(Server.class);
+    private static final Logger LOGGER = Grizzly.logger(MaquinasEndpoint.class);
 
     static { LOGGER.setLevel(Level.FINER);}
 
     @GET
-    @Produces(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
     public String getIncidencias(@PathParam("tipoPiso") TipoPiso tipoPiso,
                               @PathParam("tipoEdificio") TipoEdificio tipoEdificio) {
         LOGGER.info("GET /maquinas");

@@ -12,15 +12,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-@Path("/incidencia")
+@Path("/issues/")
 public class IncidenciaEndpoint {
 
-    private static final Logger LOGGER = Grizzly.logger(Server.class);
+    private static final Logger LOGGER = Grizzly.logger(IncidenciaEndpoint.class);
 
     static { LOGGER.setLevel(Level.FINER);}
 
     @GET
-    @Produces(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
     @Path("/{id}")
     public String getIncidencia(@PathParam("id") String id) {
         LOGGER.info("GET /incidencia");
@@ -34,8 +34,8 @@ public class IncidenciaEndpoint {
     }
 
     @POST
-    @Produces(MediaType.TEXT_PLAIN)
-    @Path("/add")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
      /*public String postIncidencia(@FormParam("edificio") String edificio, @FormParam("piso") String piso,
                              @FormParam("foto") String foto, @FormParam("titulo") String titulo,
                              @FormParam("descripcion") String descripcion, @FormParam("lat") String lat,

@@ -6,7 +6,6 @@ public class ApplicationConfig extends ResourceConfig {
 
     public ApplicationConfig() {
         register(CORSFilter.class);
-        register(HelloEndpoint.class);
         register(EspacioEndpoint.class);
         register(EspaciosEndpoint.class);
         register(IncidenciaEndpoint.class);

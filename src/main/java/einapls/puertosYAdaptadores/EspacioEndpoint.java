@@ -14,15 +14,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-@Path("espacio/{id}")
+@Path("places/{id}")
 public class EspacioEndpoint {
 
-    private static final Logger LOGGER = Grizzly.logger(Server.class);
+    private static final Logger LOGGER = Grizzly.logger(EspacioEndpoint.class);
 
     static { LOGGER.setLevel(Level.FINER);}
 
     @GET
-    @Produces(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
     public String getEspacio(@PathParam("id") String id) {
         LOGGER.info("GET /espacio");
 

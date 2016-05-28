@@ -14,15 +14,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-@Path("maquina/{id}")
+@Path("machines/{id}")
 public class MaquinaEndpoint {
 
-    private static final Logger LOGGER = Grizzly.logger(Server.class);
+    private static final Logger LOGGER = Grizzly.logger(MaquinaEndpoint.class);
 
     static { LOGGER.setLevel(Level.FINER);}
 
     @GET
-    @Produces(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
     public String getMaquina(@PathParam("id") String id) {
         LOGGER.info("GET /maquina");
 
