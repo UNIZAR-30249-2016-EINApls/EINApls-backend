@@ -23,6 +23,7 @@ public class Incidencia {
         this.estadoIncidencia = estadoIncidencia;
         this.foto = foto;
         this.descripcion = descripcion;
+        this.localizacion = localizacion;
     }
 
     //GETTERs que darán acceso a todos los atributos de interes de una incidencia.
