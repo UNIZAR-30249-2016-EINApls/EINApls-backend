@@ -1,6 +1,6 @@
 /*package einapls;
 
-import einapls.infrastructure.PoolConexiones;
+import einapls.puertosYAdaptadores.PoolConexiones;
 import org.postgis.PGgeometry;
 import org.postgresql.PGConnection;
 

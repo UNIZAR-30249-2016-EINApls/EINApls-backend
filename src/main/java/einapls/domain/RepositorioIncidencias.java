@@ -1,7 +1,7 @@
 package einapls.domain;
 
 import einapls.domain.enumerations.*;
-import einapls.infrastructure.PoolConexiones;
+import einapls.puertosYAdaptadores.PoolConexiones;
 
 import java.sql.*;
 import java.util.ArrayList;
