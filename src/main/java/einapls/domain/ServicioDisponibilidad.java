@@ -1,5 +1,6 @@
 package einapls.domain;
 
+//// TODO: 28/05/2016  elimnar los imports y todo lo que no usemos, una vez que tenga el visto bueno esto 
 import einapls.infrastructure.PoolConexiones;
 
 import java.sql.Connection;
@@ -8,8 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
-// Servicio que nos indicará si un determinado espacio, diferenciado por su id, esta disponible o no.
-
+// Servicio que nos indicará si un determinado espacio, esta disponible o no.
 public class ServicioDisponibilidad {
 
     public static boolean isDisponible (Espacio espacio) {
