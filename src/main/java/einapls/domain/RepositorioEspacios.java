@@ -4,7 +4,7 @@ import einapls.domain.enumerations.ConversorEnum;
 import einapls.domain.enumerations.TipoEdificio;
 import einapls.domain.enumerations.TipoEspacio;
 import einapls.domain.enumerations.TipoPiso;
-import einapls.infrastructure.PoolConexiones;
+import einapls.puertosYAdaptadores.PoolConexiones;
 
 import java.sql.*;
 import java.util.ArrayList;

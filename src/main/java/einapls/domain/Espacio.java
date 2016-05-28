@@ -1,7 +1,7 @@
 package einapls.domain;
 
 import einapls.domain.enumerations.TipoEspacio;
-import einapls.infrastructure.PoolConexiones;
+import einapls.puertosYAdaptadores.PoolConexiones;
 
 import java.sql.Connection;
 import java.sql.SQLException;
