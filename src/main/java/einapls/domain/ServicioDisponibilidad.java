@@ -1,7 +1,7 @@
 package einapls.domain;
 
 //// TODO: 28/05/2016  elimnar los imports y todo lo que no usemos, una vez que tenga el visto bueno esto 
-import einapls.infrastructure.PoolConexiones;
+import einapls.puertosYAdaptadores.PoolConexiones;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
