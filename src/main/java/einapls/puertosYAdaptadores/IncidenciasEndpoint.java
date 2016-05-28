@@ -28,13 +28,10 @@ public class IncidenciasEndpoint {
     public String getIncidencias(@PathParam("tipoPiso") TipoPiso tipoPiso,
                               @PathParam("tipoEdificio") TipoEdificio tipoEdificio) {
         LOGGER.info("GET /incidencias");
-
         Incidencia[] incidencias = OperacionesIncidencias.getIncidencias(tipoPiso, tipoEdificio);
         //Le pasamos el array de Incidencias al serializar para obtener un GeoJSon
         SerializerToGeoJson serializer = new SerializerToGeoJson(incidencias);
         String geoJsonEspacios = serializer.DoSerializeToGeoJson();
         return geoJsonEspacios;
-
-
     }
 }

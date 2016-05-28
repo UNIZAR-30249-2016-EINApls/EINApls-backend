@@ -16,7 +16,6 @@ import einapls.domain.enumerations.TipoPiso;
 public class IncidenciaDeserializer {
 
     public static Incidencia deserializeGeoJsonIncidencia(String geoJsonIncidencia){
-
          /*Dado:
             {
                 "type": "FeatureCollection",
@@ -34,7 +33,6 @@ public class IncidenciaDeserializer {
                    }
                 ]
             }
-
             ej:
             {
                 "type": "FeatureCollection",
@@ -85,5 +83,4 @@ public class IncidenciaDeserializer {
 
         return incidencia;
     }
-
 }

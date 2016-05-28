@@ -28,7 +28,6 @@ public class MaquinasEndpoint {
     public String getIncidencias(@PathParam("tipoPiso") TipoPiso tipoPiso,
                               @PathParam("tipoEdificio") TipoEdificio tipoEdificio) {
         LOGGER.info("GET /maquinas");
-
         MaquinaExpendedora[] maquinas = OperacionesMaquina.getMaquinas(tipoPiso, tipoEdificio);
         //Le pasamos el array de Maquinas al serializar para obtener un GeoJSon
         SerializerToGeoJson serializer = new SerializerToGeoJson(maquinas);

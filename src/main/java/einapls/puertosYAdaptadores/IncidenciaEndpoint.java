@@ -36,23 +36,6 @@ public class IncidenciaEndpoint {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-     /*public String postIncidencia(@FormParam("edificio") String edificio, @FormParam("piso") String piso,
-                             @FormParam("foto") String foto, @FormParam("titulo") String titulo,
-                             @FormParam("descripcion") String descripcion, @FormParam("lat") String lat,
-                             @FormParam("lon") String lon){
-        LOGGER.info("POST /incidencia");
-        //Crear objeto incidencia
-        Localizacion l = new Localizacion(lat, lon, piso, edificio);
-        Incidencia incidencia = new Incidencia(1, titulo, EstadoIncidencia.ABIERTA, foto, descripcion, l);
-        try {
-            OperacionesIncidencias.postIncidencias(incidencia);
-            return "{'error': false}";
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return "{'error': true}";
-        }
-
-    }*/
     public String postIncidencia(@FormParam("geojson") String geojson){
         LOGGER.info("POST /incidencia");
         Incidencia i = IncidenciaDeserializer.deserializeGeoJsonIncidencia(geojson);

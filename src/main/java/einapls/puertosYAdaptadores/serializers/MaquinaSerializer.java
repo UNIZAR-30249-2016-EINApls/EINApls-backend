@@ -14,11 +14,7 @@ import java.util.Iterator;
  */
 public class MaquinaSerializer {
 
-    private MaquinaExpendedora[] maquinas;
 
-    public MaquinaSerializer(MaquinaExpendedora[] maquinas){
-        this.maquinas = maquinas;
-    }
 
     public static String serializeFeatureMaquinaExpendedora(MaquinaExpendedora maquina, boolean esUltimo){
 
