@@ -8,36 +8,6 @@ import einapls.domain.enumerations.TipoPiso;
 
 public class IncidenciaSerializer {
 
-    private Incidencia[] incidencias;
-
-    public IncidenciaSerializer(Incidencia[] incidencias){ this.incidencias = incidencias; }
-
-    public String serializeToGeoJson(){
-
-        /*Formateamos un nuevo GeoJson con los datos obtenidos siguiendo el siguiente formato:
-            {
-                "type": "FeatureCollection",
-                "features": ['bodyGeoJson']
-            }
-         */
-        String inicioGeoJson = "{" +
-                "\"type\" : \"FeatureCollection\"," +
-                "\"features\": [";
-        String finGeoJson = "]}";
-        String bodyGeoJson="";
-        if(incidencias.length>0){
-            boolean esUltimo = false;
-            //Recorremos el array de espacios
-            for(int i=0;i<incidencias.length;i++){
-                if(i==(incidencias.length-1)){
-                    esUltimo=true;
-                }
-                bodyGeoJson = bodyGeoJson + serializeFeatureIncidencia(incidencias[i],esUltimo);
-            }
-        }
-        return inicioGeoJson+bodyGeoJson+finGeoJson;
-    }
-
     public static String serializeFeatureIncidencia(Incidencia incidencia, boolean esUltimo){
         //Cargamos los datos de la incidencia
         int id = incidencia.getId();
