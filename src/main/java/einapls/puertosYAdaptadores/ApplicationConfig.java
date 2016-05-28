@@ -6,13 +6,13 @@ public class ApplicationConfig extends ResourceConfig {
 
     public ApplicationConfig() {
         register(CORSFilter.class);
-        register(HelloEndpoint.class);
         register(EspacioEndpoint.class);
         register(EspaciosEndpoint.class);
         register(IncidenciaEndpoint.class);
         register(IncidenciasEndpoint.class);
         register(MaquinaEndpoint.class);
         register(MaquinasEndpoint.class);
+        register(SimuladorServicioHorarios.class);
     }
 
     //para cada de clase de java que teng aun end point hay que declararla en este constructor

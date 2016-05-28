@@ -28,7 +28,6 @@ public class Espacio {
     }
 
    //GETTERs
-
     public int getId() { return id; }
 
     public int getOcupacion() {
@@ -53,8 +52,9 @@ public class Espacio {
         ocupacion--;
         actualizarBD();
     }
+
+    //Actualizar la BD
     public void actualizarBD(){
-        //TODO no deja
         Statement stmt = null;
         Connection con = PoolConexiones.getConex();
         try {

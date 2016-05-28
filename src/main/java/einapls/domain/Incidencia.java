@@ -7,14 +7,12 @@ import einapls.domain.enumerations.EstadoIncidencia;
  */
 public class Incidencia {
 
-    private static int numIncidencia;
-
     private int id;                             //id unico
     private String titulo;                      //Titulo asignado por el usuario a la incidencia
     private EstadoIncidencia estadoIncidencia;  //Estado de la incidencia, pudiendo ser: ABIERTA, ACEPTADA y CERRADA
     private String foto;                        //Enlace a la foto
     private String descripcion;                 //Descripcion asignada por el usuario a la incidencia
-    private Localizacion localizacion;
+    private Localizacion localizacion;          //Localizacion asociada a esta incidencia
 
     public Incidencia (int id, String titulo, EstadoIncidencia estadoIncidencia, String foto, String descripcion,
                        Localizacion localizacion) {
@@ -25,12 +23,9 @@ public class Incidencia {
         this.estadoIncidencia = estadoIncidencia;
         this.foto = foto;
         this.descripcion = descripcion;
-        this.localizacion = localizacion;
-        numIncidencia++;
     }
 
-    //GETTERs que darán acceso a todos los atributos de interes publico de una incidencia.
-
+    //GETTERs que darán acceso a todos los atributos de interes de una incidencia.
     public int getId() { return id; }
 
     public String getTitulo() { return titulo; }
@@ -42,11 +37,6 @@ public class Incidencia {
     public String getDescripcion() { return descripcion; }
 
     public Localizacion getLocalizacion() { return localizacion; }
-
-
-    public static int getNumIncidencia() {
-        return numIncidencia;
-    }
 
     //SETTERs que permitiran modificar el estado de la incidencia
     public void setEstadoAceptada() {

@@ -21,7 +21,6 @@ public class SerializerToGeoJson {
     public SerializerToGeoJson(MaquinaExpendedora[] maquinas){ this.maquinas = maquinas; }
 
     public String DoSerializeToGeoJson(){
-
         /*Formateamos un nuevo GeoJson con los datos obtenidos siguiendo el siguiente formato:
             {
                 "type": "FeatureCollection",
@@ -61,7 +60,6 @@ public class SerializerToGeoJson {
                 }
             }
         }
-
         return inicioGeoJson+bodyGeoJson+finGeoJson;
     }
 }

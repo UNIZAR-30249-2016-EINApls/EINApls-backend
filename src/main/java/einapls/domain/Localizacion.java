@@ -23,39 +23,6 @@ public class Localizacion {
         this.TIPOEDIFICIO = tipoEdificio;
     }
 
-    public Localizacion(String lat, String lon, String tipoPiso, String tipoEdificio){
-        TIPOPISO = ConversorEnum.getTipoPiso(tipoPiso);
-        /*if(tipoPiso.equals("PISO_0")){
-            tp = TipoPiso.PISO_0;
-        }else if(tipoPiso.equals("PISO_1")){
-            tp = TipoPiso.PISO_1;
-        }else if(tipoPiso.equals("PISO_2")){
-            tp = TipoPiso.PISO_2;
-        }else if(tipoPiso.equals("PISO_3")){
-            tp = TipoPiso.PISO_3;
-        }else if(tipoPiso.equals("PISO_4")){
-            tp = TipoPiso.PISO_4;
-        }else if(tipoPiso.equals("SOTANO")){
-            tp = TipoPiso.SOTANO;
-        }
-        TIPOPISO = tp;
-        */
-        TIPOEDIFICIO = ConversorEnum.getTipoEdificio(tipoEdificio);
-        /*
-        TipoEdificio te = null;
-        if(tipoEdificio.equals("ADA_BYRON")){
-            te = TipoEdificio.ADA_BYRON;
-        }else if(tipoPiso.equals("TORRES_QUEVEDO")){
-            te = TipoEdificio.TORRES_QUEVEDO;
-        }else if(tipoPiso.equals("BETANCOURT")){
-            te = TipoEdificio.BETANCOURT;
-        }
-        TIPOEDIFICIO = te;
-        */
-        this.lon = Long.parseLong(lon);
-        this.lat = Long.parseLong(lat);
-    }
-
     //GETTERs
     public float getLat() { return lat; }
 
@@ -66,5 +33,4 @@ public class Localizacion {
     }
 
     public TipoEdificio getEdificio() { return TIPOEDIFICIO; }
-
 }

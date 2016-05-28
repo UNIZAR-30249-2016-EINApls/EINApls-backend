@@ -11,11 +11,6 @@ import einapls.domain.enumerations.TipoPiso;
  */
 public class EspacioSerializer {
 
-
-    private Espacio[] espacios;
-
-    public EspacioSerializer(Espacio[] espacios){ this.espacios=espacios; }
-
     public static String serializeFeatureEspacio(Espacio espacio, boolean esUltimo){
         //Cargamos los datos del espacio
         int id = espacio.getId();
@@ -42,7 +37,7 @@ public class EspacioSerializer {
                     "id": 'id',
                     "disponibiliad": 'disponibiliad',
                     "ocupacion": 'ocupacion',
-                    "capacidad": 'ocupacion',
+                    "capacidad": 'capacidad',
                     ""tipoEspacio: "'tipoEspacio'",
                     "tipoPiso": "'tipoEspacio'",
                     "tipoEdificio": "'tipoEspacio'"
